@@ -1,7 +1,7 @@
 # 📚 Personal Organizer – OOP Mini Project
 
 Welcome to my **Object-Oriented Programming (OOP) mini project**.  
-This project is a **Personal Organizer App**, developed in **C++** using a GUI framework like **Qt** . It helps students manage their **income, expenses, academic schedules, and deadlines** — all in one place!
+This project is a **Personal Organizer App**, developed in **C++** using a GUI framework **Qt** . It helps students manage their **income, expenses, academic schedules, and deadlines** — all in one place!
 
 ---
 
@@ -77,6 +77,6 @@ This project is a **Personal Organizer App**, developed in **C++** using a GUI f
 
 **Name**: K.D.Heshan Rashmika  
 **University**: Rajarata University of Sri Lanka 
-**Course**: Object-Oriented Programming (OOP) -ICT1306 
-**Instructor**: Mr. Akalanka Hettige  
+**Course**: Object-Oriented Programming (OOP) -ICT1306
+<br>**Instructor**: Mr. Akalanka Hettige  
 **GitHub**: [@RashmikaKDH](https://github.com/RashmikaKDH)
