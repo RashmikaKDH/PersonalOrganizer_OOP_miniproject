@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Budgetcreating</class>
+ <widget class="QMainWindow" name="Budgetcreating">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{border-image: url(:/image/Background04.png) 0 0 0 0 stretch stretch;}
+
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <widget class="QLabel" name="lable">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>540</y>
+      <width>571</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">  border: 1px solid #ff99cc;
+  border-radius: 10px;
+color: #ff99cc;</string>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_back">
+    <property name="geometry">
+     <rect>
+      <x>930</x>
+      <y>540</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 2px solid #DEC8AC;
+font: 700 10pt &quot;Segoe UI&quot;;
+border-radius: 15px;
+color: #DEC8AC;</string>
+    </property>
+    <property name="text">
+     <string>BACK</string>
+    </property>
+   </widget>
+   <widget class="QTableView" name="tableView">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>40</y>
+      <width>481</width>
+      <height>421</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_tableview">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>540</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 2px solid #DEC8AC;
+font: 700 10pt &quot;Segoe UI&quot;;
+border-radius: 15px;
+color: #DEC8AC;</string>
+    </property>
+    <property name="text">
+     <string>Refresh table</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>40</y>
+      <width>491</width>
+      <height>421</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox{font: 20pt &quot;Segoe UI&quot;;
+border: 5px solid  #3C536F;
+ border-radius: 10px;
+/* From https://css.glass */
+background: rgba(0, 0, 0, 0.14);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(11.4px);
+-webkit-backdrop-filter: blur(11.4px);
+border: 1px solid rgba(0, 0, 0, 0.11);color: #3C536F;}</string>
+    </property>
+    <property name="title">
+     <string>CREATE YOUR BUDGET</string>
+    </property>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>80</y>
+       <width>421</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label_category">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(60, 83, 111);</string>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Category&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBox_category">
+        <item>
+         <property name="text">
+          <string>Food</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Entertainment</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Traveling</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Clothing</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Education Equipment</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>University Fees</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>190</y>
+       <width>421</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_budgetamount">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(60, 83, 111);</string>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Budget Amount&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_budgetamount">
+        <property name="styleSheet">
+         <string notr="true">QLineEdit{font: 12pt &quot;Segoe UI&quot;;
+border: 2px solid  #3C536F;
+ border-radius: 5px;
+background-color: transparent;
+color: #3C536F;
+}</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QPushButton" name="pushButton_addbudget">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>320</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid #3C536F;
+font: 700 10pt &quot;Segoe UI&quot;;
+border-radius: 15px;
+color: #3C536F;</string>
+     </property>
+     <property name="text">
+      <string>Add Budget</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_update">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>320</y>
+       <width>121</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid #3C536F;
+font: 700 10pt &quot;Segoe UI&quot;;
+border-radius: 15px;
+color: #3C536F;</string>
+     </property>
+     <property name="text">
+      <string>Update Budget</string>
+     </property>
+    </widget>
+   </widget>
+   <zorder>pushButton_back</zorder>
+   <zorder>tableView</zorder>
+   <zorder>pushButton_tableview</zorder>
+   <zorder>groupBox</zorder>
+   <zorder>lable</zorder>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1280</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

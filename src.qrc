@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/Background01.png</file>
+        <file>image/Background02.png</file>
+        <file>image/Background03.png</file>
+        <file>image/Background04.png</file>
+        <file>image/window_icon.png</file>
+        <file>image/OrganizerUI01.png</file>
+        <file>image/OrganizerUI02.png</file>
+        <file>image/OrganizerUI03.png</file>
+    </qresource>
+</RCC>

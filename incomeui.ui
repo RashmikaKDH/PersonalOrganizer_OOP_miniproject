@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Incomeui</class>
+ <widget class="QDialog" name="Incomeui">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Income</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>:/image/image/window_icon.png</normaloff>:/image/image/window_icon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+QDialog{border-image: url(:/image/Background04.png) 0 0 0 0 stretch stretch;}
+</string>
+  </property>
+  <widget class="QPushButton" name="pushButton_back">
+   <property name="geometry">
+    <rect>
+     <x>1180</x>
+     <y>710</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 3px solid #000000;
+background-color:#000000;
+border-radius: 15px;
+color: white;
+font: 700 10pt &quot;Segoe UI&quot;;
+	</string>
+   </property>
+   <property name="text">
+    <string>Back</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lable">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>10</y>
+     <width>431</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">  border: 1px solid #ff99cc;
+  border-radius: 10px;
+color: #ff99cc;</string>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:22pt;&quot;&gt;TextLabel&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>130</y>
+     <width>551</width>
+     <height>521</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QGroupBox{font: 19pt &quot;Segoe UI&quot;;
+color:White;
+
+border-radius: 15px;
+
+background-color: #841ebc;
+border: 1px solid #a23fdf;}</string>
+   </property>
+   <property name="title">
+    <string> ADD YOUR INCOME</string>
+   </property>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>60</y>
+      <width>471</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label_income_source">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;font-size:12pt; font-weight:700; color:#ffffff;&quot;&gt;Income Source&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboBox_income_source">
+       <property name="styleSheet">
+        <string notr="true">font: 12pt &quot;Segoe UI&quot;;
+border: 2px solid  white;
+ border-radius: 5px;
+background-color: transparent;
+color: white;</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Job</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Allowance from parents</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Scholarship</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Student Aid</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>180</y>
+      <width>471</width>
+      <height>75</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="label_Description">
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;font-size:12pt; font-weight:700; color:#ffffff;&quot;&gt;Description&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTextEdit" name="textEdit_Description">
+       <property name="styleSheet">
+        <string notr="true">font: 12pt &quot;Segoe UI&quot;;
+border: 2px solid  white;
+ border-radius: 5px;
+background-color: transparent;
+color: white;</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="pushButton_Add">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>360</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 3px solid #000000;
+background-color:#000000;
+border-radius: 15px;
+color: white;
+font: 700 10pt &quot;Segoe UI&quot;;
+	</string>
+    </property>
+    <property name="text">
+     <string>ADD</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>120</y>
+      <width>471</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;font-size:12pt; font-weight:700; color:#ffffff;&quot;&gt;Date&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDateEdit" name="QDate">
+       <property name="styleSheet">
+        <string notr="true">font: 12pt &quot;Segoe UI&quot;;
+border: 2px solid  white;
+ border-radius: 5px;
+background-color: transparent;
+color: white;</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>260</y>
+      <width>471</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLabel" name="label_Amount">
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;font-size:12pt; font-weight:700; color:#ffffff;;&quot;&gt;Amount&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_Amount">
+       <property name="styleSheet">
+        <string notr="true">font: 12pt &quot;Segoe UI&quot;;
+border: 2px solid  white;
+ border-radius: 5px;
+background-color: transparent;
+color: white;</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QTableView" name="tableView">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>130</y>
+     <width>601</width>
+     <height>521</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QGroupBox{font: 19pt &quot;Segoe UI&quot;;
+color:White;
+
+border-radius: 15px;
+
+background-color: #841ebc;
+border: 1px solid #a23fdf;}</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>shedulemaneger</class>
+ <widget class="QMainWindow" name="shedulemaneger">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1080</width>
+    <height>667</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"> #centralwidget{border-image: url(:/image/image/Background15.jpg) 0 0 0 0 stretch stretch;}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTableWidget" name="scheduleTable">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>90</y>
+      <width>541</width>
+      <height>401</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: rgb(255, 255, 255);
+border-radius: 16px;
+border: 1px solid rgba(0, 0, 0, 1);
+
+/* Styling for the headers */
+QHeaderView::section {
+    background-color: rgba(0, 0, 0, 0.77); /* Green background for headers */
+    color: white; /* White text for headers */
+    padding: 5px;
+    border: 1px solid #ddd; /* Divider color */
+    font-weight: bold;
+    text-align: center;
+	border-radius: 16px
+}
+
+/* Alternating row colors */
+QTableWidget::item:!selected {
+    /* From https://css.glass */
+background: rgba(76, 0, 101, 0.45);
+border-radius: 16px;
+border: 1px solid rgba(76, 0, 101, 0.45);
+}
+QTableWidget::item:!selected:nth-child(even) {
+    background-color: #f2f2f2; /* Light gray background for alternating rows */
+}
+
+/* Highlight selected rows */
+QTableWidget::item:selected {
+    background-color: #ffcc80; /* Orange background for selected rows */
+    color: red; /* Black text for better contrast */
+}
+
+/* Hover effect for cells */
+QTableWidget::item:hover {
+    background-color: #ffeb99; /* Yellow background on hover */
+    color: black; /* Black text on hover */
+}
+
+/* Vertical and horizontal scrollbars */
+QScrollBar:vertical {
+    background-color: #f2f2f2;
+    width: 10px;
+    border: none;
+}
+QScrollBar::handle:vertical {
+    background-color: #4CAF50; /* Green scrollbar handle */
+    border-radius: 5px;
+    min-height: 20px;
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    background: none; /* Remove buttons on scrollbars */
+}
+
+QScrollBar:horizontal {
+    background-color: #f2f2f2;
+    height: 10px;
+    border: none;
+}
+QScrollBar::handle:horizontal {
+    background-color: #4CAF50; /* Green scrollbar handle */
+    border-radius: 5px;
+    min-width: 20px;
+}
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    background: none;
+}
+
+/* Table corner button (top-left corner) */
+QTableCornerButton::section {
+    background-color: #4CAF50; /* Green corner background */
+    border: 1px solid #ddd;
+}
+
+</string>
+    </property>
+    <property name="alternatingRowColors">
+     <bool>false</bool>
+    </property>
+    <property name="verticalScrollMode">
+     <enum>QAbstractItemView::ScrollMode::ScrollPerItem</enum>
+    </property>
+    <property name="columnCount">
+     <number>3</number>
+    </property>
+    <attribute name="horizontalHeaderVisible">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="horizontalHeaderCascadingSectionResizes">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="horizontalHeaderMinimumSectionSize">
+     <number>35</number>
+    </attribute>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>150</number>
+    </attribute>
+    <attribute name="horizontalHeaderHighlightSections">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="horizontalHeaderStretchLastSection">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="verticalHeaderCascadingSectionResizes">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="verticalHeaderStretchLastSection">
+     <bool>false</bool>
+    </attribute>
+    <column>
+     <property name="text">
+      <string>Neame Of Lectur / Event</string>
+     </property>
+     <property name="toolTip">
+      <string/>
+     </property>
+     <property name="font">
+      <font>
+       <bold>false</bold>
+       <strikeout>false</strikeout>
+      </font>
+     </property>
+     <property name="textAlignment">
+      <set>AlignHCenter|AlignBottom</set>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Start Time</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Deadline / End Time</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QLabel" name="lable">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>530</y>
+      <width>511</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">  border: 1px solid #ff99cc;
+  border-radius: 10px;
+color: #ff68cc;
+
+</string>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>90</y>
+      <width>431</width>
+      <height>391</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#groupBox{
+color: rgb(255, 255, 255);
+font: 900 16pt &quot;Segoe UI Black&quot;;
+/* From https://css.glass */
+background: rgba(138, 174, 181, 0.2);
+
+border: 1px solid rgba(138, 174, 181, 0.3);
+}</string>
+    </property>
+    <property name="title">
+     <string>Manage Your Shedules</string>
+    </property>
+    <widget class="QPushButton" name="addButton">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>300</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid #DEC8AC;
+font: 700 10pt &quot;Segoe UI&quot;;
+border-radius: 15px;
+color: #DEC8AC;</string>
+     </property>
+     <property name="text">
+      <string>Add shedule</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>411</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ffffff;&quot;&gt;Name of letcure / Event&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="nameEdit">
+        <property name="styleSheet">
+         <string notr="true">background: rgba(255, 255, 255, 0.15);
+border-radius: 16px;
+
+border: 1px solid rgba(255, 255, 255, 0.11);</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>130</y>
+       <width>411</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Start Time&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTimeEdit" name="timeEdit">
+        <property name="styleSheet">
+         <string notr="true">background: rgba(255, 255, 255, 0.15);
+
+</string>
+        </property>
+        <property name="wrapping">
+         <bool>false</bool>
+        </property>
+        <property name="dateTime">
+         <datetime>
+          <hour>0</hour>
+          <minute>0</minute>
+          <second>0</second>
+          <year>2000</year>
+          <month>1</month>
+          <day>1</day>
+         </datetime>
+        </property>
+        <property name="timeSpec">
+         <enum>Qt::TimeSpec::LocalTime</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>200</y>
+       <width>411</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ffffff;&quot;&gt;Deadline / End Time&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QDateTimeEdit" name="deadlineEdit">
+        <property name="styleSheet">
+         <string notr="true">background: rgba(255, 255, 255, 0.15);
+</string>
+        </property>
+        <property name="locale">
+         <locale language="English" country="UnitedStates"/>
+        </property>
+        <property name="date">
+         <date>
+          <year>2025</year>
+          <month>1</month>
+          <day>1</day>
+         </date>
+        </property>
+        <property name="calendarPopup">
+         <bool>true</bool>
+        </property>
+        <property name="currentSectionIndex">
+         <number>0</number>
+        </property>
+        <property name="timeSpec">
+         <enum>Qt::TimeSpec::LocalTime</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QPushButton" name="deleteSheduleButton">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>300</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid #DEC8AC;
+font: 700 10pt &quot;Segoe UI&quot;;
+border-radius: 15px;
+color: #DEC8AC;</string>
+     </property>
+     <property name="text">
+      <string>Delete shedule</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="deleteSheduleButton_2">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>300</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 2px solid #DEC8AC;
+font: 700 10pt &quot;Segoe UI&quot;;
+border-radius: 15px;
+color: #DEC8AC;</string>
+     </property>
+     <property name="text">
+      <string>Update shedule</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButton_backto">
+    <property name="geometry">
+     <rect>
+      <x>850</x>
+      <y>520</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::ContextMenuPolicy::DefaultContextMenu</enum>
+    </property>
+    <property name="accessibleName">
+     <string/>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 2px solid #DEC8AC;
+font: 700 10pt &quot;Segoe UI&quot;;
+border-radius: 15px;
+color: #DEC8AC;</string>
+    </property>
+    <property name="text">
+     <string>Back</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1080</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

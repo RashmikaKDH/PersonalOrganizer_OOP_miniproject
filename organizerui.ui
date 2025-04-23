@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>organizerui</class>
+ <widget class="QDialog" name="organizerui">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Organizer</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>:/image/image/window_icon.png</normaloff>:/image/image/window_icon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#organizerui{
+border-image: url(:/image/Background02.png) 0 0 0 0 stretch stretch;}</string>
+  </property>
+  <widget class="QPushButton" name="pushButton_logout">
+   <property name="geometry">
+    <rect>
+     <x>1180</x>
+     <y>20</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 3px solid #ff000d;
+background-color:#ff000d;
+border-radius: 15px;
+color: white;
+font: 700 10pt &quot;Segoe UI&quot;;
+
+</string>
+   </property>
+   <property name="text">
+    <string>LogOut</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lable">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>60</y>
+     <width>451</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 500 20pt &quot;Segoe UI&quot;;
+color: white;</string>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>320</y>
+     <width>381</width>
+     <height>381</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>20</y>
+      <width>201</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/image/OrganizerUI01.png) 0 0 0 0 stretch stretch;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_income">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>320</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 3px solid #e4555c;
+background-color:#e4555c;
+border-radius: 15px;
+color: white;
+font: 700 10pt &quot;Segoe UI&quot;;</string>
+    </property>
+    <property name="text">
+     <string>ADD INCOME</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_expense">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>320</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 3px solid #e4555c;
+background-color:#e4555c;
+border-radius: 15px;
+color: white;
+font: 700 10pt &quot;Segoe UI&quot;;</string>
+    </property>
+    <property name="text">
+     <string>ADD EXPENSE</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_createbudget">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>320</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 3px solid #e4555c;
+background-color:#e4555c;
+border-radius: 15px;
+color: white;
+font: 700 10pt &quot;Segoe UI&quot;;</string>
+    </property>
+    <property name="text">
+     <string>CREATE BUDGET</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>250</y>
+      <width>311</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #e4555c;
+font: 700 10pt &quot;Segoe UI&quot;;</string>
+    </property>
+    <property name="text">
+     <string>You can manage Incomes or Expences from here 
+Add incomes or Expences and more.</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>320</y>
+     <width>361</width>
+     <height>381</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>20</y>
+      <width>251</width>
+      <height>241</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/image/OrganizerUI02.png) 0 0 0 0 stretch stretch;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_financialreports">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>320</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 3px solid #5564ac;
+background-color:#5564ac;
+border-radius: 15px;
+color: white;
+font: 700 10pt &quot;Segoe UI&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string>Financial Reports</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>250</y>
+      <width>311</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #5564ac;
+font: 700 10pt &quot;Segoe UI&quot;;</string>
+    </property>
+    <property name="text">
+     <string>You can generate monthly reports showing total
+income total expences and savings..</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_3">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>320</y>
+     <width>341</width>
+     <height>381</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>301</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/image/OrganizerUI03.png) 0 0 0 0 stretch stretch;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_academic">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>320</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 3px solid #ae3296;
+background-color:#ae3296;
+border-radius: 15px;
+color: white;
+font: 700 10pt &quot;Segoe UI&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Academic schedule</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>250</y>
+      <width>311</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #ae3296;
+font: 700 10pt &quot;Segoe UI&quot;;</string>
+    </property>
+    <property name="text">
+     <string>You can Add their weekly lecture shedule and 
+set the time duration for it</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
