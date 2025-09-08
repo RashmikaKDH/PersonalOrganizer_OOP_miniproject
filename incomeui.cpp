@@ -1,35 +1,21 @@
+#include "DatabaseManager.h"
 #include "incomeui.h"
 #include "ui_incomeui.h"
 #include"organizerui.h"
 #include"loginwindow.h"
 
 Incomeui::Incomeui(QWidget *parent)
-    : QDialog(parent)
+    : UserDataTableDialog(parent)
     , ui(new Ui::Incomeui)
 {
     ui->setupUi(this);
-
-    //connecting database for login
-    sqlitedb = QSqlDatabase::addDatabase("QSQLITE");
-
-    sqlitedb.setDatabaseName("C:/Users/Rashmika97/Music/PersonalOrganizerOOP/Db/logindatabase.db");
-
-    //checking conectivity of database
-    if(!sqlitedb.open()){
-        ui->lable->setText("Failed to Open Database");
+    if(!DatabaseManager::instance().getDatabase().isOpen()){
+        qDebug() << "Failed to Open Database";
     }
     else{
-        ui->lable->setText("Database Conected..");
-
+        qDebug() << "Database Connected..";
     }
-
-    QSqlTableModel *tablemodel = new QSqlTableModel(this, sqlitedb);
-    tablemodel->setTable("incomedata");
-    tablemodel->setFilter(QString("username = '%1'").arg(globalUsername));
-    tablemodel->select();
-
-    ui->tableView->setModel(tablemodel);
-    ui->tableView->show();
+    refreshTable();
 
 }
 
@@ -37,12 +23,21 @@ Incomeui::~Incomeui()
 {
     delete ui;
 }
+//++++++++
 
+QTableView* Incomeui::getTableView() const {
+    return ui->tableView;
+}
+
+QString Incomeui::getTableName() const {
+    return "incomedata";
+}
+
+//+++++++
 
 //Back button
 void Incomeui::on_pushButton_back_clicked()
 {
-    conclose();
     this->close();
     organizerui *backorga = new organizerui;
     backorga->show();
@@ -55,14 +50,6 @@ void Incomeui::on_pushButton_Add_clicked()
 {
 
 
-// retreive data from input fields
-
-    if(!sqlitedb.open()){
-
-
-        QMessageBox::information(this,"Not Connected","Database Not Ci=onnected");
-    }
-    else{
 
         //getting input from lineEdites
 
@@ -80,7 +67,7 @@ void Incomeui::on_pushButton_Add_clicked()
 
         //define qury to insert data to data base
 
-        QSqlQuery qryadd;
+        QSqlQuery qryadd(DatabaseManager::instance().getDatabase());
 
         qryadd.prepare("INSERT INTO incomedata(Income_Source,Description,Amount,Date,username)""VALUES (:incomesource,:description,:Amountfloat,:selectdate,:username)");
 
@@ -92,21 +79,18 @@ void Incomeui::on_pushButton_Add_clicked()
 
         if(qryadd.exec()){
             ui->lable->setText("Registration Sucsusfull...");
+            //QMessageBox::information(this, "Success", "Registration Susfull.");
 
-            QSqlTableModel *tablemodel = new QSqlTableModel(this, sqlitedb);
-            tablemodel->setTable("incomedata");
-            tablemodel->setFilter(QString("username = '%1'").arg(globalUsername));
-            tablemodel->select();
-
-            ui->tableView->setModel(tablemodel);
-            ui->tableView->show();
+           refreshTable();
 
         }else{
             ui->lable->setText("Registration Uncsusfull...!!!");
-        }
+            //QMessageBox::information(this, "Unsuccess", "Registration Uncsusfull..");
+
+         }
 
 
-    }
+   // }
 
 }
 

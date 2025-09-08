@@ -34,80 +34,7 @@
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: rgb(255, 255, 255);
-border-radius: 16px;
-border: 1px solid rgba(0, 0, 0, 1);
-
-/* Styling for the headers */
-QHeaderView::section {
-    background-color: rgba(0, 0, 0, 0.77); /* Green background for headers */
-    color: white; /* White text for headers */
-    padding: 5px;
-    border: 1px solid #ddd; /* Divider color */
-    font-weight: bold;
-    text-align: center;
-	border-radius: 16px
-}
-
-/* Alternating row colors */
-QTableWidget::item:!selected {
-    /* From https://css.glass */
-background: rgba(76, 0, 101, 0.45);
-border-radius: 16px;
-border: 1px solid rgba(76, 0, 101, 0.45);
-}
-QTableWidget::item:!selected:nth-child(even) {
-    background-color: #f2f2f2; /* Light gray background for alternating rows */
-}
-
-/* Highlight selected rows */
-QTableWidget::item:selected {
-    background-color: #ffcc80; /* Orange background for selected rows */
-    color: red; /* Black text for better contrast */
-}
-
-/* Hover effect for cells */
-QTableWidget::item:hover {
-    background-color: #ffeb99; /* Yellow background on hover */
-    color: black; /* Black text on hover */
-}
-
-/* Vertical and horizontal scrollbars */
-QScrollBar:vertical {
-    background-color: #f2f2f2;
-    width: 10px;
-    border: none;
-}
-QScrollBar::handle:vertical {
-    background-color: #4CAF50; /* Green scrollbar handle */
-    border-radius: 5px;
-    min-height: 20px;
-}
-QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
-    background: none; /* Remove buttons on scrollbars */
-}
-
-QScrollBar:horizontal {
-    background-color: #f2f2f2;
-    height: 10px;
-    border: none;
-}
-QScrollBar::handle:horizontal {
-    background-color: #4CAF50; /* Green scrollbar handle */
-    border-radius: 5px;
-    min-width: 20px;
-}
-QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
-    background: none;
-}
-
-/* Table corner button (top-left corner) */
-QTableCornerButton::section {
-    background-color: #4CAF50; /* Green corner background */
-    border: 1px solid #ddd;
-}
-
-</string>
+     <string notr="true"/>
     </property>
     <property name="alternatingRowColors">
      <bool>false</bool>
@@ -424,7 +351,7 @@ color: #DEC8AC;</string>
      <x>0</x>
      <y>0</y>
      <width>1080</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

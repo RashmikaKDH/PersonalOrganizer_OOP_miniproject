@@ -1,6 +1,7 @@
 #ifndef SHEDULEMANEGER_H
 #define SHEDULEMANEGER_H
 
+
 #include <QMainWindow>
 #include <QDialog>
 
@@ -32,33 +33,21 @@ class shedulemaneger : public QMainWindow
 public:
     explicit shedulemaneger(QWidget *parent = nullptr);
     ~shedulemaneger();
+private slots:
+    void onAddSchedule(); // Handle adding a new schedule
+    void checkDeadlines(); // Check for schedules with approaching deadlines
+    void loadSchedulesToTable(); // Load schedules from the database to the table widget
+    void on_pushButton_backto_clicked();
+    void on_deleteSheduleButton_clicked();
+    void on_deleteSheduleButton_2_clicked();
+
+private:
     void initialize(); // Initialize the database and create tables if needed
     void addSchedule(const QString &name, const QTime &time, const QDateTime &deadline); // Add a new schedule
     QStringList getDueSchedules(); // Retrieve schedules with deadlines due
     QStringList getOverdueSchedules();
 
-    void conclose(){
-
-        db.close();
-        db.removeDatabase(QSqlDatabase::defaultConnection);
-    }
-
-private slots:
-    void onAddSchedule(); // Handle adding a new schedule
-    void checkDeadlines(); // Check for schedules with approaching deadlines
-    void loadSchedulesToTable(); // Load schedules from the database to the table widget
-
-
-
-    void on_pushButton_backto_clicked();
-
-    void on_deleteSheduleButton_clicked();
-
-    void on_deleteSheduleButton_2_clicked();
-
-private:
     Ui::shedulemaneger *ui;
-    QSqlDatabase db; // SQLite database connection
     QTimer *deadlineTimer;
 };
 

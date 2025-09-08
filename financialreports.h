@@ -30,11 +30,11 @@ public:
 
     //close database function
 
-    void conclose(){
+/*+++  void conclose(){
 
         sqlitedb.close();
         sqlitedb.removeDatabase(QSqlDatabase::defaultConnection);
-    }
+    }+++*/
 private slots:
     void on_genaratepushButton_clicked();
 
@@ -42,7 +42,7 @@ private slots:
 
 private:
     Ui::financialreports *ui;
-    QSqlDatabase sqlitedb;
+    //+++QSqlDatabase sqlitedb;
 };
 
 #endif // FINANCIALREPORTS_H

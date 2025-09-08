@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>Budgetcreating</class>
- <widget class="QMainWindow" name="Budgetcreating">
+ <widget class="QDialog" name="Budgetcreating">
   <property name="enabled">
    <bool>true</bool>
   </property>
@@ -253,18 +253,7 @@ color: #3C536F;</string>
    <zorder>groupBox</zorder>
    <zorder>lable</zorder>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1280</width>
-     <height>21</height>
-    </rect>
-   </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
- </widget>
  <resources/>
  <connections/>
 </ui>

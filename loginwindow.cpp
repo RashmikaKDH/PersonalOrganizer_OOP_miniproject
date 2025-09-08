@@ -1,4 +1,4 @@
-
+#include "DatabaseManager.h"
 #include "loginwindow.h"
 #include "ui_loginwindow.h"
 #include"QMessageBox"
@@ -14,21 +14,6 @@ loginwindow::loginwindow(QWidget *parent)
 
     ui->lineedit_username->setPlaceholderText("Enter Your Username");
     ui->lineedit_password->setPlaceholderText("Enter Your Password");
-
- //connecting database for login
-    sqlitedb = QSqlDatabase::addDatabase("QSQLITE");
-
-    sqlitedb.setDatabaseName("C:/Users/Rashmika97/Music/PersonalOrganizerOOP/Db/logindatabase.db");
-
-//checking conectivity of database
-    if(!sqlitedb.open()){    
-        ui->label->setText("Failed to Open Database");
-    }
-    else{
-        ui->label->setText("Database Conected..");
-
-    }
-
 
 }
 
@@ -47,7 +32,7 @@ loginwindow::~loginwindow()
 
 //cleare table function
 void clearTable(const QString &tableName) {
-    QSqlQuery query;
+    QSqlQuery query(DatabaseManager::instance().getDatabase());
 
     // Construct the SQL query string
     QString sql = "DELETE FROM " + tableName;
@@ -73,14 +58,8 @@ void loginwindow::on_LPushButton_login_clicked()
         QMessageBox::warning(this, "To Login ", "All fields must be filled!");
         return;
     }
-
-//checking is database is open and connected
-    if(!sqlitedb.isOpen()){
-        qDebug()<<"Failed to open the database";
-        return;
-    }
 //Query for checking data matching
-    QSqlQuery qry;
+    QSqlQuery qry(DatabaseManager::instance().getDatabase());
 
     if(qry.exec("select * from logininfo where username='"+username+"'and password='"+password+"'"))
     {
@@ -93,7 +72,7 @@ void loginwindow::on_LPushButton_login_clicked()
             ui->label->setText("Username and password is correct");
 
             //saving username and id to atable
-            QSqlQuery qrydatasave;
+            QSqlQuery qrydatasave(DatabaseManager::instance().getDatabase());
             clearTable("userinfo");
            //qrydatasave.prepare("DELETE * FROM userinfo");
             qrydatasave.prepare("INSERT INTO userinfo(username,password)""VALUES (:us,:ps)");
@@ -103,7 +82,6 @@ void loginwindow::on_LPushButton_login_clicked()
             qrydatasave.exec();
 
 
-            conclose();
             //loginui -> organizer ui connection
             this->close();
             Organizerui = new organizerui(this);

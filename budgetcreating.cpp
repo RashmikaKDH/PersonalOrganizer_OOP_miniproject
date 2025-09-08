@@ -1,47 +1,48 @@
+#include "DatabaseManager.h"
 #include "budgetcreating.h"
 #include "ui_budgetcreating.h"
 #include "organizerui.h"
 #include"loginwindow.h"
 
 Budgetcreating::Budgetcreating(QWidget *parent)
-    : QMainWindow(parent)
+    : UserDataTableDialog(parent)
     , ui(new Ui::Budgetcreating)
 {
     ui->setupUi(this);
 
 //connecting database for login
-    sqlitedb = QSqlDatabase::addDatabase("QSQLITE");
-
-    sqlitedb.setDatabaseName("C:/Users/Rashmika97/Music/PersonalOrganizerOOP/Db/logindatabase.db");
-
- //checking conectivity of database
-    if(!sqlitedb.open()){
-        ui->lable->setText("Failed to Open Database");
+    if(!DatabaseManager::instance().getDatabase().isOpen()){
+        qDebug() << "Failed to Open Database";
     }
     else{
-        ui->lable->setText("Database Conected.."+globalUsername);
-//----------------table view for budget
-        QSqlTableModel *tablemodel = new QSqlTableModel(this, sqlitedb);
-
-        tablemodel->setTable("budget");
-        tablemodel->setFilter(QString("username = '%1'").arg(globalUsername));
-        tablemodel->select();
-
-        ui->tableView->setModel(tablemodel);
-        ui->tableView->show();
-
+        qDebug() << "Database Connected..";
     }
+//----------------table view for budget
+        refreshTable();
+
+
 }
 
     Budgetcreating::~Budgetcreating()
 {
     delete ui;
 }
+//++++++++
+
+QTableView* Budgetcreating::getTableView() const {
+    return ui->tableView;
+}
+
+QString Budgetcreating::getTableName() const {
+    return "budget";
+}
+
+//+++++++
+
 
 //back button------------------------------------------------
 void Budgetcreating::on_pushButton_back_clicked()
 {
-    conclose();
     this->close();
     organizerui *backtoor = new organizerui;
     backtoor->show();
@@ -50,7 +51,7 @@ void Budgetcreating::on_pushButton_back_clicked()
 //Add budget button------------------------------------------------
 void Budgetcreating::on_pushButton_addbudget_clicked()
 {
-    if(!sqlitedb.open()){
+    if(!DatabaseManager::instance().getDatabase().isOpen()){
 
         QMessageBox::information(this,"Not Connected","Database Not Ci=onnected");
 
@@ -69,7 +70,7 @@ void Budgetcreating::on_pushButton_addbudget_clicked()
         //create qury  insert data
 
 
-        QSqlQuery qry;
+        QSqlQuery qry(DatabaseManager::instance().getDatabase());
 
         if(qry.exec("select * from budget where username='"+globalUsername+"'and category='"+budgetcategory+"'"))
         {
@@ -79,39 +80,41 @@ void Budgetcreating::on_pushButton_addbudget_clicked()
                 countt++;
             }
             if(countt==1){
-                ui->lable->setText("select Sucsusfull...");
+                qDebug() << "Budget category found for user, preparing update.";
 
 
                 //------------------------ write to update qury
-                QSqlQuery qryup;
+                QSqlQuery qryup(DatabaseManager::instance().getDatabase());
                 qryup.prepare("UPDATE budget SET budgetamount = :budgetamount WHERE category = :category AND username = :username");
                 qryup.bindValue(":budgetamount", budgetamountdouble);
                 qryup.bindValue(":category", budgetcategory);
                 qryup.bindValue(":username", globalUsername);
-               // QSqlQuery qryup;
+               // QSqlQuery qryup(DatabaseManager::instance().getDatabase());
 
                 //qryup.prepare("UPDATE budget SET budgetamount='"+budgetamountdouble+"'  WHERE category='"+budgetcategory+"' and username='"+globalUsername+"'");
                 qryup.exec();
 
                 if(qryup.exec()){
 
-                    ui->lable->setText("update Sucsusfull...");
+                    QMessageBox::information(this, "Success", "Budget update successful.");
 
                 }else{
-                    ui->lable->setText("update Uncsusfull...!!!");
+                    QMessageBox::information(this, "failed", "Budget update failed.");
                 }
 
 
 
             }
             if(countt>1)
-                ui->lable->setText("Duplicated category");
+                QMessageBox::warning(this, "Warning", "Duplicated category");
 
             if(countt<1){
-                ui->lable->setText("No value to seleectl...");
+                QMessageBox::warning(this, "Warning", "No value to seleectl...");
+
+
 
                 //--------------write insert qury
-               QSqlQuery qryaddbud;
+               QSqlQuery qryaddbud(DatabaseManager::instance().getDatabase());
 
                 qryaddbud.prepare("INSERT INTO budget(category,budgetamount,username)""VALUES(:budgetcategory,:budgetamountdouble,:username)");
 
@@ -124,22 +127,18 @@ void Budgetcreating::on_pushButton_addbudget_clicked()
 
 
                 if(qryaddbud.exec()){
-                    ui->lable->setText("Registration Sucsusfull...");
+                    //ui->lable->setText("Registration Sucsusfull...");
+                    QMessageBox::information(this, "Success", "Budget update successful.");
 
                 }else{
-                      ui->lable->setText("Registration failed..." );
+                    //ui->lable->setText("Registration failed..." );
+                    QMessageBox::information(this, "Failed", "Budget update Unsuccessful.");
                }
             }
         }
 
         //=============== refresh table view-----------
-        QSqlTableModel *tablemodel = new QSqlTableModel(this, sqlitedb);
-        tablemodel->setTable("budget");
-        tablemodel->setFilter(QString("username = '%1'").arg(globalUsername));
-        tablemodel->select();
-
-        ui->tableView->setModel(tablemodel);
-        ui->tableView->show();
+        refreshTable();
 
 
     }
@@ -151,13 +150,7 @@ void Budgetcreating::on_pushButton_addbudget_clicked()
 void Budgetcreating::on_pushButton_tableview_clicked()
 {
     //----------------table view for budget
-    QSqlTableModel *tablemodel = new QSqlTableModel(this, sqlitedb);
-    tablemodel->setTable("budget");
-    tablemodel->setFilter(QString("username = '%1'").arg(globalUsername));
-    tablemodel->select();
-
-    ui->tableView->setModel(tablemodel);
-    ui->tableView->show();
+    refreshTable();
 
 }
 

@@ -1,5 +1,6 @@
 #ifndef EXPENSE_H
 #define EXPENSE_H
+#include "UserDataTableDialog.h"
 
 #include <QDialog>
 #include <QApplication>
@@ -18,7 +19,7 @@ namespace Ui {
 class Expense;
 }
 
-class Expense : public QDialog
+class Expense : public UserDataTableDialog
 {
     Q_OBJECT
 
@@ -27,14 +28,10 @@ public:
     ~Expense();
     double getMonthlyExpenseSum(const QString &category);
 
-
-//close database function
-
-    void conclose(){
-
-    sqlitedb.close();
-    sqlitedb.removeDatabase(QSqlDatabase::defaultConnection);
-    }
+protected:
+    // Implement the pure virtual functions from the base class
+    QTableView* getTableView() const override;
+    QString getTableName() const override;
 
 private slots:
     void on_pushButton_backto_clicked();
@@ -43,7 +40,6 @@ private slots:
 
 private:
     Ui::Expense *ui;
-    QSqlDatabase sqlitedb;
 
 };
 
