@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     budgetcreating.cpp \
+    databasemanager.cpp \
     expense.cpp \
     financialreports.cpp \
     incomeui.cpp \
@@ -17,17 +18,21 @@ SOURCES += \
     loginwindow.cpp \
     organizerui.cpp \
     shedulemaneger.cpp \
-    signup.cpp
+    signup.cpp \
+
 
 HEADERS += \
+    UserDataTableDialog.h \
     budgetcreating.h \
+    databasemanager.h \
     expense.h \
     financialreports.h \
     incomeui.h \
     loginwindow.h \
     organizerui.h \
     shedulemaneger.h \
-    signup.h
+    signup.h \
+
 
 FORMS += \
     budgetcreating.ui \

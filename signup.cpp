@@ -1,3 +1,4 @@
+#include "DatabaseManager.h"
 #include "signup.h"
 #include "ui_signup.h"
 #include"loginwindow.h"
@@ -14,19 +15,13 @@ signup::signup(QWidget *parent)
     ui->lineedit_register_password->setPlaceholderText("Enter Password");
     ui->lineedit_register_phone->setPlaceholderText("Enter Phone Number");
 
-//connecting database for login
-    sqlitedb = QSqlDatabase::addDatabase("QSQLITE");
 
-    sqlitedb.setDatabaseName("C:/Users/Rashmika97/Music/PersonalOrganizerOOP/Db/logindatabase.db");
-
-//checking conectivity of database
-    if(!sqlitedb.open()){
-        ui->label->setText("Failed to Open Database");
+    if(!DatabaseManager::instance().getDatabase().isOpen()){
+        qDebug() << "Failed to Open Database";
     }
     else{
-        ui->label->setText("Database Conected..");
+        qDebug() << "Database Connected..";
     }
-
 
 }
 
@@ -44,7 +39,7 @@ void signup::on_pushButton_register_clicked()
 {
 
 //retreive data from input fields
-    if(!sqlitedb.open()){
+    if(!DatabaseManager::instance().getDatabase().isOpen()){
 
         QMessageBox::information(this,"Not Connected","Database Not Connected" );
 
@@ -64,7 +59,7 @@ void signup::on_pushButton_register_clicked()
 
         //define query to inseert data
 
-        QSqlQuery qryregister;
+        QSqlQuery qryregister(DatabaseManager::instance().getDatabase());
 
         qryregister.prepare("INSERT INTO logininfo (username, password, email, phone)" "VALUES (:registerusername,:registurepassword,:registeremail,:registerphone)");
 
@@ -76,7 +71,6 @@ void signup::on_pushButton_register_clicked()
         if(qryregister.exec()){
             ui->label->setText("Registration Sucsusfull...");
 
-            conclose();
 //-----------redirect to liginwindow
             this->close();
             loginwindow *logwin =new loginwindow;

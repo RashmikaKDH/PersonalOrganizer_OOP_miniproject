@@ -29,13 +29,6 @@ public:
     loginwindow(QWidget *parent = nullptr);
     ~loginwindow();
 
-        //close database function
-
-    void conclose(){
-
-        sqlitedb.close();
-        sqlitedb.removeDatabase(QSqlDatabase::defaultConnection);
-    }
 
 private slots:
 
@@ -50,7 +43,6 @@ private slots:
 
 private:
     Ui::loginwindow *ui;
-    QSqlDatabase sqlitedb;
     signup *Signup1;
     organizerui *Organizerui;
 

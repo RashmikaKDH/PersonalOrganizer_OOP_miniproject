@@ -2,6 +2,8 @@
 #ifndef BUDGETCREATING_H
 #define BUDGETCREATING_H
 
+#include "UserDataTableDialog.h"
+
 #include <QMainWindow>
 #include <QDialog>
 #include <QApplication>
@@ -14,13 +16,14 @@
 #include<QDebug>
 #include<QFileInfo>
 #include<QMessageBox>
+#include<QSqlError>
 #include<QSqlTableModel>
 
 namespace Ui {
 class Budgetcreating;
 }
 
-class Budgetcreating : public QMainWindow
+class Budgetcreating : public UserDataTableDialog
 {
     Q_OBJECT
 
@@ -30,13 +33,16 @@ public:
 
     //close database function
 
-    void conclose(){
+ /*   void conclose(){
 
         sqlitedb.close();
         sqlitedb.removeDatabase(QSqlDatabase::defaultConnection);
-    }
+    }*/
 
-
+protected:
+    // Implement the pure virtual functions from the base class
+    QTableView* getTableView() const override;
+    QString getTableName() const override;
 
 
 private slots:
@@ -50,7 +56,7 @@ private slots:
 
 private:
     Ui::Budgetcreating *ui;
-    QSqlDatabase sqlitedb;
+    //++QSqlDatabase sqlitedb;
 
 };
 

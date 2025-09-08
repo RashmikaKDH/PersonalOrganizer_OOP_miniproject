@@ -22,13 +22,6 @@ public:
     explicit signup(QWidget *parent = nullptr);
     ~signup();
 
-    //close database function
-    void conclose(){
-
-        sqlitedb.close();
-        sqlitedb.removeDatabase(QSqlDatabase::defaultConnection);
-    }
-
 private slots:
     void on_pushButton_register_clicked();
 
@@ -36,7 +29,6 @@ private slots:
 
 private:
     Ui::signup *ui;
-    QSqlDatabase sqlitedb;
   //loginwindow *Loginwindow1;
 };
 

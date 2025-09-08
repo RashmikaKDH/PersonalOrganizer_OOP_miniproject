@@ -1,3 +1,4 @@
+#include "DatabaseManager.h"
 #include "financialreports.h"
 #include "ui_financialreports.h"
 #include"organizerui.h"
@@ -14,7 +15,15 @@ financialreports::financialreports(QWidget *parent)
     ui->setupUi(this);
 
     //connecting database for login
-    sqlitedb = QSqlDatabase::addDatabase("QSQLITE");
+    if(!DatabaseManager::instance().getDatabase().isOpen()){
+        qDebug() << "Failed to Open Database";
+    }
+    else{
+        qDebug() << "Database Connected..";
+    }
+
+
+/* +++++++   sqlitedb = QSqlDatabase::addDatabase("QSQLITE");
 
     sqlitedb.setDatabaseName("C:/Users/Rashmika97/Music/PersonalOrganizerOOP/Db/logindatabase.db");
 
@@ -24,7 +33,7 @@ financialreports::financialreports(QWidget *parent)
     }
     else{
         ui->lable->setText("Database Conected..");
-    }
+    }*/
 }
 
 financialreports::~financialreports()
@@ -41,7 +50,7 @@ void financialreports::on_genaratepushButton_clicked()
     QString selectedYear = QString::number(selectedDate.year());
 
     // Prepare the SQL query to get the sum of the amount column from expensedata
-    QSqlQuery expenseQuery;
+    QSqlQuery expenseQuery(DatabaseManager::instance().getDatabase());
     expenseQuery.prepare(R"(SELECT SUM(amount) AS total FROM expensedata WHERE strftime('%m', date) = :month AND strftime('%Y', date) = :year)");
 
     // Bind the parameters for expensedata
@@ -60,7 +69,7 @@ void financialreports::on_genaratepushButton_clicked()
     }
 
     // Prepare the SQL query to get the sum of the amount column from incomedata
-    QSqlQuery incomeQuery;
+    QSqlQuery incomeQuery(DatabaseManager::instance().getDatabase());
     incomeQuery.prepare(R"(SELECT SUM(amount) AS total FROM incomedata WHERE strftime('%m', date) = :month AND strftime('%Y', date) = :year)");
 
     // Bind the parameters for incomedata
@@ -93,7 +102,6 @@ void financialreports::on_genaratepushButton_clicked()
 
 void financialreports::on_pushButton_clicked()
 {
-    conclose();
     this->close();
     organizerui *backtoor = new organizerui;
     backtoor->show();

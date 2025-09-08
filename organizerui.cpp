@@ -1,3 +1,4 @@
+#include "DatabaseManager.h"
 #include "organizerui.h"
 #include "ui_organizerui.h"
 #include"incomeui.h"

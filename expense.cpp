@@ -1,10 +1,11 @@
+#include "DatabaseManager.h"
 #include "expense.h"
 #include "ui_expense.h"
 #include "organizerui.h"
 #include"loginwindow.h"
 #include"string"
 Expense::Expense(QWidget *parent)
-    : QDialog(parent)
+    : UserDataTableDialog(parent)
     , ui(new Ui::Expense)
 {
     ui->setupUi(this);
@@ -12,35 +13,13 @@ Expense::Expense(QWidget *parent)
 
 
 //connecting database for login
-    sqlitedb = QSqlDatabase::addDatabase("QSQLITE");
-
-    sqlitedb.setDatabaseName("C:/Users/Rashmika97/Music/PersonalOrganizerOOP/Db/logindatabase.db");
-
-//checking conectivity of database
-    if(!sqlitedb.open()){
-        ui->lable->setText("Failed to Open Database");
+    if(!DatabaseManager::instance().getDatabase().isOpen()){
+        qDebug() << "Failed to Open Database";
     }
     else{
-        ui->lable->setText("Database Conected..");
-
-
-
-        //---------------------
-
-
-        QSqlTableModel *tablemodel = new QSqlTableModel(this, sqlitedb);
-        tablemodel->setTable("expensedata");
-        tablemodel->setFilter(QString("username = '%1'").arg(globalUsername));
-        tablemodel->select();
-
-        ui->tableView->setModel(tablemodel);
-        ui->tableView->show();
-
-
-
-
-        //-----------------
+        qDebug() << "Database Connected..";
     }
+    refreshTable();
     //ui->label->setText(QString::number(getMonthlyExpenseSum("Food")));
 
 }
@@ -50,10 +29,20 @@ Expense::~Expense()
     delete ui;
 }
 
+//+++++++++++++++
+QTableView* Expense::getTableView() const {
+    return ui->tableView;
+}
+
+QString Expense::getTableName() const {
+    return "expensedata";
+}
+//++++++++++++++
+
+
 //Back button
 void Expense::on_pushButton_backto_clicked()
 {
-    conclose();
     this->close();
     organizerui *backtoor = new organizerui;
     backtoor->show();
@@ -63,13 +52,6 @@ void Expense::on_pushButton_backto_clicked()
 
 void Expense::on_pushButton_add_clicked()
 {
-    if(!sqlitedb.open()){
-            QMessageBox::information(this,"Not Connected","Database Not Ci=onnected");
-
-        }
-    else{
-
-
             QString expensecategory = ui->comboBox_category->currentText();
 
             QDate exdate = ui->dateEdit_expense->date();
@@ -82,7 +64,7 @@ void Expense::on_pushButton_add_clicked()
 
 //qury to insert data to database
 
-                QSqlQuery qryadd;
+                QSqlQuery qryadd(DatabaseManager::instance().getDatabase());
                 //--
 
                 qryadd.prepare("INSERT INTO expensedata(category,description,date,amount,username)""VALUES(:expensecategory,:description,:date,:amount,:username)");
@@ -99,18 +81,15 @@ void Expense::on_pushButton_add_clicked()
 
                 if(qryadd.exec()){
                     ui->lable->setText("Registration Sucsusfull...");
-
-                    //refresh the table model
-                    QSqlTableModel *tablemodel = new QSqlTableModel(this, sqlitedb);
-                    tablemodel->setTable("expensedata");
-                    tablemodel->setFilter(QString("username = '%1'").arg(globalUsername));
-                    tablemodel->select();
-
-                    ui->tableView->setModel(tablemodel);
-                    ui->tableView->show();
+                    refreshTable();
 
                 }else{
                     ui->lable->setText("Registration Uncsusfull...!!!");
+                    refreshTable();
+
+
+
+                }
 
 
 
@@ -119,16 +98,11 @@ void Expense::on_pushButton_add_clicked()
 
 
 
-            }
-
-
-        }
 
 
 
+ }
 
-
-}
 
 
 double Expense::getMonthlyExpenseSum(const QString &category) {

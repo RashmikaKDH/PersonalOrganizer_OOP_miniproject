@@ -1,3 +1,5 @@
+#include "UserDataTableDialog.h"
+
 #ifndef INCOMEUI_H
 #define INCOMEUI_H
 
@@ -12,12 +14,13 @@
 #include<QDebug>
 #include<QFileInfo>
 #include<QMessageBox>
+#include<QMainWindow>
 
 namespace Ui {
 class Incomeui;
 }
 
-class Incomeui : public QDialog
+class Incomeui : public UserDataTableDialog
 {
     Q_OBJECT
 
@@ -25,13 +28,10 @@ public:
     explicit Incomeui(QWidget *parent = nullptr);
     ~Incomeui();
 
-    //close database function
-
-    void conclose(){
-
-        sqlitedb.close();
-        sqlitedb.removeDatabase(QSqlDatabase::defaultConnection);
-    }
+protected:
+    // Implement the pure virtual functions from the base class
+    QTableView* getTableView() const override;
+    QString getTableName() const override;
 
 private slots:
     void on_pushButton_back_clicked();
@@ -42,9 +42,6 @@ private slots:
 
 private:
     Ui::Incomeui *ui;
-    //QLabel *lable;
-  // Qtext
-    QSqlDatabase sqlitedb;
 
 };
 
