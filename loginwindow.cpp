@@ -2,6 +2,7 @@
 #include "loginwindow.h"
 #include "ui_loginwindow.h"
 #include"QMessageBox"
+#include "AppUtils.h"
 
 
 loginwindow::loginwindow(QWidget *parent)
@@ -42,6 +43,7 @@ void clearTable(const QString &tableName) {
         qDebug() << "Error clearing table:" << query.lastError();
     } else {
         qDebug() << "Table cleared successfully!";
+
     }
 }
 
@@ -97,6 +99,8 @@ void loginwindow::on_LPushButton_login_clicked()
             ui->label->setText("Duplicated Username and password");
         if(countt<1)
             ui->label->setText("Username and password is not correct");
+            //AppUtils::showMessage(this, "Title", "custom msg weda");
+        AppUtils::showToast("showToast successful.", this);
     }
 }
 
