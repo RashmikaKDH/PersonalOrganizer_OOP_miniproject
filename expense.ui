@@ -49,24 +49,6 @@ font: 700 10pt &quot;Segoe UI&quot;;
     <string>Back</string>
    </property>
   </widget>
-  <widget class="QLabel" name="lable">
-   <property name="geometry">
-    <rect>
-     <x>430</x>
-     <y>20</y>
-     <width>451</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"> border: 1px solid #ff99cc;
- border-radius: 10px;
-color: #ff99cc;</string>
-   </property>
-   <property name="text">
-    <string>TextLabel</string>
-   </property>
-  </widget>
   <widget class="QTableView" name="tableView">
    <property name="geometry">
     <rect>

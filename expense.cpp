@@ -4,6 +4,7 @@
 #include "organizerui.h"
 #include"loginwindow.h"
 #include"string"
+#include "AppUtils.h"
 Expense::Expense(QWidget *parent)
     : UserDataTableDialog(parent)
     , ui(new Ui::Expense)
@@ -80,11 +81,15 @@ void Expense::on_pushButton_add_clicked()
 
 
                 if(qryadd.exec()){
-                    ui->lable->setText("Registration Sucsusfull...");
+                    //ui->lable->setText("Registration Sucsusfull...");
+                    AppUtils::showToast("New Expense Adding Sucsusfull...", this);
+
                     refreshTable();
 
                 }else{
-                    ui->lable->setText("Registration Uncsusfull...!!!");
+                    //ui->lable->setText("Registration Uncsusfull...!!!");
+                    AppUtils::showToastred("New Expense Adding Failed...!!!", this);
+
                     refreshTable();
 
 
@@ -112,7 +117,8 @@ double Expense::getMonthlyExpenseSum(const QString &category) {
     getMonthlyExpenseSum.bindValue(":category",category);
 
     if (!getMonthlyExpenseSum.exec()) {
-        qWarning() << "Failed to execute query:" << getMonthlyExpenseSum.lastError().text();
+        //qWarning() << "Failed to execute query:" << getMonthlyExpenseSum.lastError().text();
+        qDebug() << "Failed to execute query:" << getMonthlyExpenseSum.lastError().text();
         return 0.0; // Return 0.0 if query execution fails
     }
 

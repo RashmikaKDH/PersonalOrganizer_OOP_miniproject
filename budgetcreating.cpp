@@ -3,6 +3,7 @@
 #include "ui_budgetcreating.h"
 #include "organizerui.h"
 #include"loginwindow.h"
+#include "AppUtils.h"
 
 Budgetcreating::Budgetcreating(QWidget *parent)
     : UserDataTableDialog(parent)
@@ -53,7 +54,9 @@ void Budgetcreating::on_pushButton_addbudget_clicked()
 {
     if(!DatabaseManager::instance().getDatabase().isOpen()){
 
-        QMessageBox::information(this,"Not Connected","Database Not Ci=onnected");
+        //QMessageBox::information(this,"Not Connected","Database Not Ci=onnected");
+        AppUtils::showToastred("Database is Not connected...", this);
+
 
 
     }
@@ -96,10 +99,12 @@ void Budgetcreating::on_pushButton_addbudget_clicked()
 
                 if(qryup.exec()){
 
-                    QMessageBox::information(this, "Success", "Budget update successful.");
+                    //QMessageBox::information(this, "Success", "Budget update successful.");
+                    AppUtils::showToast("Budget update successful..", this);
 
                 }else{
-                    QMessageBox::information(this, "failed", "Budget update failed.");
+                    //QMessageBox::information(this, "failed", "Budget update failed.");
+                    AppUtils::showToastred("Budget update failed..", this);
                 }
 
 
@@ -109,7 +114,10 @@ void Budgetcreating::on_pushButton_addbudget_clicked()
                 QMessageBox::warning(this, "Warning", "Duplicated category");
 
             if(countt<1){
-                QMessageBox::warning(this, "Warning", "No value to seleectl...");
+                //QMessageBox::warning(this, "Warning", "No value to seleectl...");
+                //AppUtils::showToastred("This catogary is haven't budget yet", this);
+
+
 
 
 
@@ -128,11 +136,16 @@ void Budgetcreating::on_pushButton_addbudget_clicked()
 
                 if(qryaddbud.exec()){
                     //ui->lable->setText("Registration Sucsusfull...");
-                    QMessageBox::information(this, "Success", "Budget update successful.");
+                   // QMessageBox::information(this, "Success", "Budget update successful.");
+                    AppUtils::showToast("Budget Add successful.", this);
+
+
 
                 }else{
                     //ui->lable->setText("Registration failed..." );
-                    QMessageBox::information(this, "Failed", "Budget update Unsuccessful.");
+                    //QMessageBox::information(this, "Failed", "Budget update Unsuccessful.");
+                    AppUtils::showToastred("Budget Add Failed.", this);
+
                }
             }
         }

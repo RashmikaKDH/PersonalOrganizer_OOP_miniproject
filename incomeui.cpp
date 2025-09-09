@@ -3,6 +3,7 @@
 #include "ui_incomeui.h"
 #include"organizerui.h"
 #include"loginwindow.h"
+#include "AppUtils.h"
 
 Incomeui::Incomeui(QWidget *parent)
     : UserDataTableDialog(parent)
@@ -78,14 +79,18 @@ void Incomeui::on_pushButton_Add_clicked()
         qryadd.bindValue(":username",globalUsername);
 
         if(qryadd.exec()){
-            ui->lable->setText("Registration Sucsusfull...");
+            //ui->lable->setText("Registration Sucsusfull...");
             //QMessageBox::information(this, "Success", "Registration Susfull.");
+            AppUtils::showToast("New Income Adding Successful.", this);
+
 
            refreshTable();
 
         }else{
-            ui->lable->setText("Registration Uncsusfull...!!!");
+           // ui->lable->setText("Registration Uncsusfull...!!!");
             //QMessageBox::information(this, "Unsuccess", "Registration Uncsusfull..");
+            AppUtils::showToastred("New Income Adding Failed..", this);
+
 
          }
 

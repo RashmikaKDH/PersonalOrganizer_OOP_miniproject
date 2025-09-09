@@ -1,5 +1,6 @@
 #include "DatabaseManager.h"
 #include <QSqlError>
+#include "AppUtils.h"
 
 DatabaseManager& DatabaseManager::instance() {
     static DatabaseManager singletonInstance;

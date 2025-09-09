@@ -150,22 +150,6 @@ color: rgb(0, 0, 0);</string>
      </layout>
     </widget>
    </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>930</x>
-      <y>150</y>
-      <width>271</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: white;</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
    <widget class="QPushButton" name="LPushButton_signup">
     <property name="geometry">
      <rect>
