@@ -7,6 +7,7 @@
 #include <QSqlError>
 #include <QDebug>
 #include <QDate>
+#include "AppUtils.h"
 
 financialreports::financialreports(QWidget *parent)
     : QDialog(parent)
@@ -22,18 +23,6 @@ financialreports::financialreports(QWidget *parent)
         qDebug() << "Database Connected..";
     }
 
-
-/* +++++++   sqlitedb = QSqlDatabase::addDatabase("QSQLITE");
-
-    sqlitedb.setDatabaseName("C:/Users/Rashmika97/Music/PersonalOrganizerOOP/Db/logindatabase.db");
-
-    //checking conectivity of database
-    if(!sqlitedb.open()){
-        ui->lable->setText("Failed to Open Database");
-    }
-    else{
-        ui->lable->setText("Database Conected..");
-    }*/
 }
 
 financialreports::~financialreports()

@@ -11,6 +11,7 @@ public:
     // Displays a consistently styled message box.
     static void showMessage(QWidget *parent, const QString &title, const QString &text);
     static void showToast(const QString& message, QWidget* parent);
+    static void showToastred(const QString& message, QWidget* parent);
 
     // You can add more static utility functions here later!
     // For example:

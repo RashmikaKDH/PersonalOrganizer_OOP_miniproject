@@ -43,24 +43,6 @@ font: 700 10pt &quot;Segoe UI&quot;;
     <string>Back</string>
    </property>
   </widget>
-  <widget class="QLabel" name="lable">
-   <property name="geometry">
-    <rect>
-     <x>460</x>
-     <y>10</y>
-     <width>431</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">  border: 1px solid #ff99cc;
-  border-radius: 10px;
-color: #ff99cc;</string>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:22pt;&quot;&gt;TextLabel&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>

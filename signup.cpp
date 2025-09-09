@@ -2,6 +2,7 @@
 #include "signup.h"
 #include "ui_signup.h"
 #include"loginwindow.h"
+#include "AppUtils.h"
 
 signup::signup(QWidget *parent)
     : QDialog(parent)
@@ -41,7 +42,8 @@ void signup::on_pushButton_register_clicked()
 //retreive data from input fields
     if(!DatabaseManager::instance().getDatabase().isOpen()){
 
-        QMessageBox::information(this,"Not Connected","Database Not Connected" );
+        //QMessageBox::information(this,"Not Connected","Database Not Connected" );
+        qDebug() << "Database Not Connected..";
 
     }
     else{
@@ -53,7 +55,8 @@ void signup::on_pushButton_register_clicked()
 
         //check Lineedits are not empty
         if (registerusername.isEmpty() || registeremail.isEmpty() || registurepassword.isEmpty() || registerphone.isEmpty()) {
-            QMessageBox::warning(this, "Create An Account", "All fields must be filled!");
+            //QMessageBox::warning(this, "Create An Account", "All fields must be filled!");
+            AppUtils::showToastred("All fields must be filled!", this);
             return;
         }
 
@@ -69,7 +72,8 @@ void signup::on_pushButton_register_clicked()
         qryregister.bindValue(":registerphone",registerphone);
 
         if(qryregister.exec()){
-            ui->label->setText("Registration Sucsusfull...");
+           // ui->label->setText("Registration Sucsusfull...");
+            AppUtils::showToast("Registration Sucsusfull...", this);
 
 //-----------redirect to liginwindow
             this->close();
@@ -77,7 +81,9 @@ void signup::on_pushButton_register_clicked()
             logwin->show();
 
         }else{
-            ui->label->setText("Registration Uncsusfull...!!!");
+            //ui->label->setText("Registration Uncsusfull...!!!");
+            AppUtils::showToastred("Registration Failed...", this);
+
         }
 
     }

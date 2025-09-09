@@ -57,7 +57,10 @@ void loginwindow::on_LPushButton_login_clicked()
     setGlobalUsername(username);
 
     if (username.isEmpty() ||  password.isEmpty()) {
-        QMessageBox::warning(this, "To Login ", "All fields must be filled!");
+        //QMessageBox::warning(this, "To Login ", "All fields must be filled!");
+        AppUtils::showToastred("All fields must be filled!", this);
+
+
         return;
     }
 //Query for checking data matching
@@ -71,7 +74,9 @@ void loginwindow::on_LPushButton_login_clicked()
             countt++;
         }
         if(countt==1){
-            ui->label->setText("Username and password is correct");
+           // ui->label->setText("Username and password is correct");
+            AppUtils::showToast("Username and password is correct", this);
+
 
             //saving username and id to atable
             QSqlQuery qrydatasave(DatabaseManager::instance().getDatabase());
@@ -96,11 +101,15 @@ void loginwindow::on_LPushButton_login_clicked()
 
         }
         if(countt>1)
-            ui->label->setText("Duplicated Username and password");
+           // ui->label->setText("Duplicated Username and password");
+            //AppUtils::showToastred("Duplicated Username and password..", this);
+            qDebug() << "Duplicated Username and password..";
+
+
         if(countt<1)
-            ui->label->setText("Username and password is not correct");
-            //AppUtils::showMessage(this, "Title", "custom msg weda");
-        AppUtils::showToast("showToast successful.", this);
+           // ui->label->setText("Username and password is not correct");
+            AppUtils::showToastred("Username or password is Incorrect..", this);
+            //AppUtils::showToastred(const QString& message, QWidget* parent)
     }
 }
 

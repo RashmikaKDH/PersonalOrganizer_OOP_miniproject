@@ -21,28 +21,18 @@
 
 </string>
   </property>
-  <widget class="QWidget" name="centralwidget">
+  <widget class="QWidget" name="centralwidget" native="true">
    <property name="enabled">
     <bool>true</bool>
    </property>
-   <widget class="QLabel" name="lable">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>540</y>
-      <width>571</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">  border: 1px solid #ff99cc;
-  border-radius: 10px;
-color: #ff99cc;</string>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
-    </property>
-   </widget>
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1091</width>
+     <height>621</height>
+    </rect>
+   </property>
    <widget class="QPushButton" name="pushButton_back">
     <property name="geometry">
      <rect>
@@ -227,33 +217,9 @@ color: #3C536F;</string>
       <string>Add Budget</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_update">
-     <property name="geometry">
-      <rect>
-       <x>260</x>
-       <y>320</y>
-       <width>121</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border: 2px solid #3C536F;
-font: 700 10pt &quot;Segoe UI&quot;;
-border-radius: 15px;
-color: #3C536F;</string>
-     </property>
-     <property name="text">
-      <string>Update Budget</string>
-     </property>
-    </widget>
    </widget>
-   <zorder>pushButton_back</zorder>
-   <zorder>tableView</zorder>
-   <zorder>pushButton_tableview</zorder>
-   <zorder>groupBox</zorder>
-   <zorder>lable</zorder>
   </widget>
-  </widget>
+ </widget>
  <resources/>
  <connections/>
 </ui>

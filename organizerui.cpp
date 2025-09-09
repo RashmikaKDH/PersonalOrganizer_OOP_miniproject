@@ -8,6 +8,7 @@
 #include "financialreports.h"
 #include"financialreports.h"
 #include"shedulemaneger.h"
+#include "AppUtils.h"
 
 #include <QApplication>
 #include <QLabel>

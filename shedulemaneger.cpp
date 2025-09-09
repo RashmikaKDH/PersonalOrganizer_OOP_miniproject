@@ -1,3 +1,4 @@
+#include "AppUtils.h"
 #include "DatabaseManager.h"
 #include "shedulemaneger.h"
 #include "ui_shedulemaneger.h"
@@ -10,7 +11,7 @@
 #include <QTimer>
 #include <QStringList>
 #include <QDebug>
-#include <QTableWidgetItem>
+#include "AppUtils.h"
 
 
 shedulemaneger::shedulemaneger(QWidget *parent)
@@ -55,7 +56,9 @@ shedulemaneger::~shedulemaneger()
 
 void shedulemaneger::initialize() {
     if(!DatabaseManager::instance().getScheduleDatabase().isOpen()) {
-        qWarning() << "Failed to open database:";
+        //qWarning() << "Failed to open database:";
+        qDebug() << "Failed to open database:";
+
 
         return;
     }
@@ -77,7 +80,9 @@ void shedulemaneger::addSchedule(const QString &name, const QTime &time, const Q
     query.bindValue(":deadline", deadline.toString("yyyy-MM-dd HH:mm:ss"));
 
     if (!query.exec()) {
-        qWarning() << "Failed to add schedule:" << query.lastError().text();
+        //qWarning() << "Failed to add schedule:" << query.lastError().text();
+        AppUtils::showToastred("Failed to add schedule..", this);
+
     }
 }
 
@@ -86,7 +91,8 @@ QStringList shedulemaneger::getDueSchedules() {
     QSqlQuery query(DatabaseManager::instance().getScheduleDatabase());
     //-------to select deadline expires now
     if (!query.exec("SELECT name, deadline FROM schedules WHERE deadline <= datetime('now', 'localtime') AND deadline > datetime('now', 'localtime', '-1 minute')")) {
-        qWarning() << "Query failed:" << query.lastError().text();
+        //qWarning() << "Query failed:" << query.lastError().text();
+        qDebug() << "Query failed:" << query.lastError().text();
         return alerts;
     }
 
@@ -96,7 +102,8 @@ QStringList shedulemaneger::getDueSchedules() {
 
         QDateTime deadline = QDateTime::fromString(deadlineStr, Qt::ISODate);
         if (!deadline.isValid()) {
-            qWarning() << "Invalid deadline format for schedule:" << name << "Raw deadline:" << deadlineStr;
+            //qWarning() << "Invalid deadline format for schedule:" << name << "Raw deadline:" << deadlineStr;
+            qDebug() << "Invalid deadline format for schedule:" << name << "Raw deadline:" << deadlineStr;
             continue;
         }
 
@@ -147,13 +154,14 @@ void shedulemaneger::onAddSchedule() {
     deadline = ui->deadlineEdit->dateTime();
 
     if (name.isEmpty()) {
-        QMessageBox::warning(this, "Input Error", "Schedule name cannot be empty.");
+        //QMessageBox::warning(this, "Input Error", "Schedule name cannot be empty.");
+        AppUtils::showToastred("Schedule name cannot be empty.", this);
         return;
     }
-
     addSchedule(name, time, deadline);
 
-    QMessageBox::information(this, "Success", "Schedule added successfully.");
+    //QMessageBox::information(this, "Success", "Schedule added successfully.");
+    AppUtils::showToast("New Schedule added...", this);
 
     // --- THE CRITICAL FIX: ADD this single line of code. ---
     // This tells the table to reload ALL its data from the database,
@@ -208,7 +216,9 @@ void shedulemaneger::on_deleteSheduleButton_clicked()
 {
     name = ui->nameEdit->text();
     if (name.isEmpty()) {
-        QMessageBox::warning(this, "Input Error", "Schedule name cannot be empty.");
+       // QMessageBox::warning(this, "Input Error", "Schedule name cannot be empty.");
+        AppUtils::showToastred("Schedule name cannot be empty..", this);
+
         return;
     }
     QSqlQuery deleteshedule(DatabaseManager::instance().getScheduleDatabase());
@@ -216,17 +226,22 @@ void shedulemaneger::on_deleteSheduleButton_clicked()
     deleteshedule.bindValue(":name", name);
 
     if (!deleteshedule.exec()) {
-        qWarning() << "Failed Delete from shedule:" << deleteshedule.lastError().text();
-        ui->lable->setText("Failed to Delete from shedule:");
+        //qWarning() << "Failed Delete from shedule:" << deleteshedule.lastError().text();
+        qDebug() << "Failed Delete from shedule:" << deleteshedule.lastError().text();
+        AppUtils::showToastred("Failed Delete from shedule..", this);
+
+        //ui->lable->setText("Failed to Delete from shedule:");
     }else{
-         ui->lable->setText("Delete from shedule:");
-        QMessageBox::information(this, "Deleted", "Schedule Delete successfully.");
+      //   ui->lable->setText("Delete from shedule:");
+      //  QMessageBox::information(this, "Deleted", "Schedule Delete successfully.");
+         AppUtils::showToast("Schedule Delete successfully..", this);
+
     }
     loadSchedulesToTable();
     //refreshTable();
 }
 
-
+//++++++++++++Update button++++++++
 void shedulemaneger::on_deleteSheduleButton_2_clicked()
 {
 
@@ -239,7 +254,8 @@ void shedulemaneger::on_deleteSheduleButton_2_clicked()
 
     // Validate input
     if (name.isEmpty()) {
-        QMessageBox::warning(this, "Input Error", "Schedule name cannot be empty.");
+       // QMessageBox::warning(this, "Input Error", "Schedule name cannot be empty.");
+        AppUtils::showToastred("Schedule name cannot be empty..", this);
         return;
     }
     QSqlQuery updateshedule(DatabaseManager::instance().getScheduleDatabase());
@@ -254,10 +270,14 @@ void shedulemaneger::on_deleteSheduleButton_2_clicked()
     updateshedule.bindValue(":name", name);
 
     if (!updateshedule.exec()) {
-        qWarning() << "Failed to update schedule:" << updateshedule.lastError().text();
+        //qWarning() << "Failed to update schedule:" << updateshedule.lastError().text();
+        qDebug() << "Failed to update schedule:" << updateshedule.lastError().text();
+        AppUtils::showToastred("Failed to update schedule..", this);
+
     }
     else{
-        QMessageBox::information(this, "Updated", "Schedule Update successfully.");
+        //QMessageBox::information(this, "Updated", "Schedule Update successfully.");
+        AppUtils::showToast("Schedule Update successfully..", this);
     }
     loadSchedulesToTable();
     //refreshTable();

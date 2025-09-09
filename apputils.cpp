@@ -22,16 +22,16 @@ void AppUtils::showMessage(QWidget *parent, const QString &title, const QString 
     // Apply your custom stylesheet
     msgBox.setStyleSheet(
         "QMessageBox {"
-        "    background-color: #2E2F30;"
-        "    color: #FFFFFF;"
+        "    background-color: #f1f7ed;"
+        "    color: #54494b;"
         "    font: 12pt 'Segoe UI';"
         "}"
         "QLabel {"
-        "    color: #FFFFFF;"
+        "    color: #54494b;"
         "}"
         "QPushButton {"
-        "    background-color: #5564ac;"
-        "    color: white;"
+        "    background-color: #91c7b1;"
+        "    color: #54494b;"
         "    border-radius: 5px;"
         "    padding: 8px;"
         "    min-width: 80px;"
@@ -60,7 +60,7 @@ void AppUtils::showToast(const QString& message, QWidget* parent)
     // Style the notification using stylesheets for a modern look
     toast->setStyleSheet(
         "QLabel#toast {"
-        "   background-color: #333;"
+        "   background-color: #336A29;"
         "   color: white;"
         "   border-radius: 15px;"
         "   padding: 10px 15px;"
@@ -73,7 +73,43 @@ void AppUtils::showToast(const QString& message, QWidget* parent)
 
     // Center the notification at the bottom of the parent window
     int x = (parent->width() - toast->width()) / 2;
-    int y = parent->height() - toast->height() - 20; // 20px from bottom
+    int y = parent->height() - toast->height() - 50; // 20px from bottom
+    toast->move(x, y);
+
+    // Show the notification
+    toast->show();
+
+    // Use a QTimer to automatically close (and delete) the label after 3 seconds
+    QTimer::singleShot(3000, toast, &QLabel::close);
+}
+//++++++Red  showtost
+void AppUtils::showToastred(const QString& message, QWidget* parent)
+{
+    if (!parent) {
+        return;
+    }
+
+    // Create a QLabel for the notification
+    QLabel* toast = new QLabel(message, parent);
+    toast->setObjectName("toast"); // Set object name for styling
+
+    // Style the notification using stylesheets for a modern look
+    toast->setStyleSheet(
+        "QLabel#toast {"
+        "   background-color: #C7080C;"
+        "   color: white;"
+        "   border-radius: 15px;"
+        "   padding: 10px 15px;"
+        "   font-size: 14px;"
+        "}"
+        );
+
+    toast->setFixedSize(toast->sizeHint()); // Adjust size to content
+    toast->setAttribute(Qt::WA_DeleteOnClose); // Delete when closed
+
+    // Center the notification at the bottom of the parent window
+    int x = (parent->width() - toast->width()) / 2;
+    int y = parent->height() - toast->height() - 50; // 20px from bottom
     toast->move(x, y);
 
     // Show the notification
