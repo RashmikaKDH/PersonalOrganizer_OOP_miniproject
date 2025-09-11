@@ -7,7 +7,7 @@
 
 loginwindow::loginwindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::loginwindow)
+    , ui(new Ui::PersonalOrganizer)
 {
     ui->setupUi(this);
 

@@ -14,8 +14,8 @@
    <string>Income</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/image/image/window_icon.png</normaloff>:/image/image/window_icon.png</iconset>
+   <iconset resource="src.qrc">
+    <normaloff>:/image/window_icon.png</normaloff>:/image/window_icon.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">
@@ -249,6 +249,8 @@ border: 1px solid #a23fdf;}</string>
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="src.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -12,7 +12,7 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class loginwindow;
+class PersonalOrganizer;
 }
 QT_END_NAMESPACE
 
@@ -42,7 +42,7 @@ private slots:
     //void on_pushButton_clicked();
 
 private:
-    Ui::loginwindow *ui;
+    Ui::PersonalOrganizer *ui;
     signup *Signup1;
     organizerui *Organizerui;
 

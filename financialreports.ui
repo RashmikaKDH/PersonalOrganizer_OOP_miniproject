@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="src.qrc">
+    <normaloff>:/image/window_icon.png</normaloff>:/image/window_icon.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">#financialreports{  border-image: url(:/image/image/Background15.jpg) 0 0 0 0 stretch stretch;}
 </string>
@@ -167,6 +171,8 @@ color: #DEC8AC;</string>
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="src.qrc"/>
+ </resources>
  <connections/>
 </ui>

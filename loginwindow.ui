@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>loginwindow</class>
- <widget class="QMainWindow" name="loginwindow">
+ <class>PersonalOrganizer</class>
+ <widget class="QMainWindow" name="PersonalOrganizer">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,11 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>loginwindow</string>
+   <string>Personal Organizer</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/image/image/window_icon.png</normaloff>:/image/image/window_icon.png</iconset>
+   <iconset resource="src.qrc">
+    <normaloff>:/image/window_icon.png</normaloff>:/image/window_icon.png</iconset>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
@@ -213,6 +213,8 @@ font: 750 italic 10pt &quot;Segoe UI&quot;;
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="src.qrc"/>
+ </resources>
  <connections/>
 </ui>
