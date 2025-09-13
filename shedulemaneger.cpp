@@ -1,4 +1,5 @@
 #include "AppUtils.h"
+#include "loginwindow.h"
 #include "DatabaseManager.h"
 #include "shedulemaneger.h"
 #include "ui_shedulemaneger.h"
@@ -72,12 +73,13 @@ void shedulemaneger::initialize() {
 void shedulemaneger::addSchedule(const QString &name, const QTime &time, const QDateTime &deadline) {
     QSqlQuery query(DatabaseManager::instance().getScheduleDatabase());
 
-    query.prepare("INSERT INTO schedules (name, time, deadline) VALUES (:name, :time, :deadline)");
+    query.prepare("INSERT INTO schedules (name, time, deadline,username) VALUES (:name, :time, :deadline, :username)");
 
     //query.prepare("INSERT INTO schedules (name, time, deadline) VALUES (?, ?, ?)");
     query.bindValue(":name", name);
     query.bindValue(":time", time.toString(Qt::ISODate));  // Ensure QTime is converted to a string
     query.bindValue(":deadline", deadline.toString("yyyy-MM-dd HH:mm:ss"));
+    query.bindValue(":username",globalUsername);
 
     if (!query.exec()) {
         //qWarning() << "Failed to add schedule:" << query.lastError().text();
@@ -185,8 +187,13 @@ void shedulemaneger::loadSchedulesToTable() {
     ui->scheduleTable->setRowCount(0);
 
     QSqlQuery query(DatabaseManager::instance().getScheduleDatabase());
-    query.exec("SELECT name, time, deadline FROM schedules");
+    query.prepare("SELECT name, time, deadline FROM schedules WHERE username = :username");
+    query.bindValue(":username", globalUsername);
 
+    if (!query.exec()) {
+        qDebug() << "Failed to load schedules for user:" << globalUsername << "Error:" << query.lastError().text();
+        return;
+    }
     while (query.next()) {
         QString name = query.value(0).toString();
         QString time = query.value(1).toString();

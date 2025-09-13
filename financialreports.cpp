@@ -41,11 +41,12 @@ void financialreports::on_genaratepushButton_clicked()
 
     // Prepare the SQL query to get the sum of the amount column from expensedata
     QSqlQuery expenseQuery(DatabaseManager::instance().getDatabase());
-    expenseQuery.prepare(R"(SELECT SUM(amount) AS total FROM expensedata WHERE strftime('%m', date) = :month AND strftime('%Y', date) = :year)");
+    expenseQuery.prepare(R"(SELECT SUM(amount) AS total FROM expensedata WHERE strftime('%m', date) = :month AND strftime('%Y', date) = :year AND username = :username)");
 
     // Bind the parameters for expensedata
     expenseQuery.bindValue(":month", selectedMonth);
     expenseQuery.bindValue(":year", selectedYear);
+    expenseQuery.bindValue(":username", globalUsername);
 
     // Execute the expense query
     double expenseTotal = 0.0;
@@ -60,11 +61,12 @@ void financialreports::on_genaratepushButton_clicked()
 
     // Prepare the SQL query to get the sum of the amount column from incomedata
     QSqlQuery incomeQuery(DatabaseManager::instance().getDatabase());
-    incomeQuery.prepare(R"(SELECT SUM(amount) AS total FROM incomedata WHERE strftime('%m', date) = :month AND strftime('%Y', date) = :year)");
+    incomeQuery.prepare(R"(SELECT SUM(amount) AS total FROM incomedata WHERE strftime('%m', date) = :month AND strftime('%Y', date) = :year AND username = :username)");
 
     // Bind the parameters for incomedata
     incomeQuery.bindValue(":month", selectedMonth);
     incomeQuery.bindValue(":year", selectedYear);
+    incomeQuery.bindValue(":username", globalUsername);
 
     // Execute the income query
     double incomeTotal = 0.0;
