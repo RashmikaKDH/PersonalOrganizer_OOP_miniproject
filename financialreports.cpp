@@ -1,4 +1,5 @@
 #include "DatabaseManager.h"
+#include"loginwindow.h"
 #include "financialreports.h"
 #include "ui_financialreports.h"
 #include"organizerui.h"
