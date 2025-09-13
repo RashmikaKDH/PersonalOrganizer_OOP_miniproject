@@ -25,8 +25,8 @@ QDialog{border-image: url(:/image/Background04.png) 0 0 0 0 stretch stretch;}
   <widget class="QPushButton" name="pushButton_backto">
    <property name="geometry">
     <rect>
-     <x>1140</x>
-     <y>710</y>
+     <x>1180</x>
+     <y>720</y>
      <width>81</width>
      <height>31</height>
     </rect>
@@ -53,41 +53,53 @@ font: 700 10pt &quot;Segoe UI&quot;;
    <property name="geometry">
     <rect>
      <x>590</x>
-     <y>140</y>
-     <width>601</width>
+     <y>160</y>
+     <width>611</width>
      <height>501</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QGroupBox{font: 12pt &quot;Segoe UI&quot;;
-border: 2px solid  #3C536F;
- border-radius: 10px;
-background-color: transparent;
-color: #3C536F;}</string>
+    <string notr="true">   QTableView {
+      background-color: #841ebc;       
+       alternate-background-color: #f1c232; 
+       gridline-color: #b081ca;        
+       selection-background-color: #b081ca;
+       selection-color: white;  
+       border: 1px solid #841ebc; 
+		font: 700 9pt &quot;Segoe UI&quot;;
+    }
+  QHeaderView::section {
+       background-color: #841ebc; 
+		alternate-background-color: #cebad9; 
+       color: white;              
+       padding: 5px;
+       border: 1px solid #cebad9;
+   }
+    QTableCornerButton::section {
+       background-color: #841ebc;
+       border: 1px solid white;
+    }
+    QHeaderView {
+       background-color: #841ebc;  
+}
+
+    QTableView::item {
+       background-color: #cebad9;
+		color:#841ebc;
+}</string>
    </property>
   </widget>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>140</y>
+     <y>160</y>
      <width>491</width>
      <height>501</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">/*QGroupBox{font: 20pt &quot;Segoe UI&quot;;
-border: 5px solid  #3C536F;
- border-radius: 10px;
-/* From https://css.glass 
-background: rgba(0, 0, 0, 0.14);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(11.4px);
--webkit-backdrop-filter: blur(11.4px);
-border: 1px solid rgba(0, 0, 0, 0.11);
-color: #3C536F;}*/
-QGroupBox{font: 19pt &quot;Segoe UI&quot;;
+    <string notr="true">QGroupBox{font: 19pt &quot;Segoe UI&quot;;
 color:White;
 
 border-radius: 15px;
@@ -102,7 +114,7 @@ border: 1px solid #a23fdf;}</string>
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>150</y>
+      <y>160</y>
       <width>421</width>
       <height>51</height>
      </rect>
@@ -124,7 +136,7 @@ border: 1px solid #a23fdf;}</string>
         <string notr="true">font: 12pt &quot;Segoe UI&quot;;
 border: 2px solid  white;
  border-radius: 5px;
-background-color: transparent;
+background-color: #841ebc;
 color: white;</string>
        </property>
       </widget>
@@ -135,7 +147,7 @@ color: white;</string>
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>230</y>
+      <y>250</y>
       <width>421</width>
       <height>51</height>
      </rect>
@@ -157,7 +169,7 @@ color: white;</string>
         <string notr="true">font: 12pt &quot;Segoe UI&quot;;
 border: 2px solid  white;
  border-radius: 5px;
-background-color: transparent;
+background-color: #841ebc;
 color: white;</string>
        </property>
       </widget>
@@ -168,7 +180,7 @@ color: white;</string>
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>310</y>
+      <y>340</y>
       <width>421</width>
       <height>51</height>
      </rect>
@@ -190,7 +202,7 @@ color: white;</string>
         <string notr="true">font: 12pt &quot;Segoe UI&quot;;
 border: 2px solid  white;
  border-radius: 5px;
-background-color: transparent;
+background-color: #841ebc;
 color: white;</string>
        </property>
       </widget>
@@ -201,7 +213,7 @@ color: white;</string>
     <property name="geometry">
      <rect>
       <x>370</x>
-      <y>380</y>
+      <y>440</y>
       <width>81</width>
       <height>31</height>
      </rect>
@@ -244,7 +256,7 @@ font: 700 10pt &quot;Segoe UI&quot;;
         <string notr="true">font: 12pt &quot;Segoe UI&quot;;
 border: 2px solid  white;
  border-radius: 5px;
-background-color: transparent;
+background-color: #841ebc;
 color: white;</string>
        </property>
        <item>
@@ -281,6 +293,19 @@ color: white;</string>
      </item>
     </layout>
    </widget>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>80</y>
+     <width>451</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt; font-weight:700; color:#841ebc;&quot;&gt;EXPENSE TRACKER&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
   </widget>
  </widget>
  <resources>

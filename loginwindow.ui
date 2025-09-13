@@ -57,7 +57,7 @@ background-color: #841ebc;}</string>
      </property>
      <property name="styleSheet">
       <string notr="true">  border: 2px solid #ffffff;
-font: 10pt &quot;Segoe UI&quot;;
+font: 700 10pt &quot;Segoe UI&quot;;
   border-radius: 15px;
 color: #ffffff;</string>
      </property>
@@ -134,10 +134,10 @@ color: white;</string>
        <widget class="QLineEdit" name="lineedit_password">
         <property name="styleSheet">
          <string notr="true">font: 12pt &quot;Segoe UI&quot;;
-border: 2px solid  #ffffff;
+border: 2px solid  white;
  border-radius: 5px;
 background-color: transparent;
-color: rgb(0, 0, 0);</string>
+color: white;</string>
         </property>
         <property name="text">
          <string/>
@@ -161,7 +161,7 @@ color: rgb(0, 0, 0);</string>
     </property>
     <property name="styleSheet">
      <string notr="true">border: 3px solid #3f088f;
-font:  10pt &quot;Segoe UI&quot;;
+font:  700 10pt &quot;Segoe UI&quot;;
 border-radius: 15px;
 color: #3f088f;</string>
     </property>

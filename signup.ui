@@ -28,7 +28,7 @@ border-image:  url(:/image/Background03.png) 0 0 0 0 stretch stretch;}
    <property name="geometry">
     <rect>
      <x>440</x>
-     <y>160</y>
+     <y>140</y>
      <width>401</width>
      <height>491</height>
     </rect>
