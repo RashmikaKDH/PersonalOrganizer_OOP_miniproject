@@ -6,39 +6,38 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1080</width>
-    <height>667</height>
+    <width>1280</width>
+    <height>768</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Personal Organizer</string>
   </property>
   <property name="windowIcon">
    <iconset resource="src.qrc">
     <normaloff>:/image/window_icon.png</normaloff>:/image/window_icon.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">#financialreports{  border-image: url(:/image/image/Background15.jpg) 0 0 0 0 stretch stretch;}
+   <string notr="true">QDialog{border-image: url(:/image/Background04.png) 0 0 0 0 stretch stretch;}
 </string>
   </property>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>120</y>
+     <x>370</x>
+     <y>220</y>
      <width>531</width>
      <height>391</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">#groupBox{
-background: rgba(255, 255, 255, 0.15);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(13.1px);
--webkit-backdrop-filter: blur(13.1px);
-border: 1px solid rgba(255, 255, 255, 0.11);
-}</string>
+    <string notr="true">QGroupBox{font: 19pt &quot;Segoe UI&quot;;
+color:White;
+
+border-radius: 15px;
+
+background-color: #841ebc;
+border: 1px solid #a23fdf;}</string>
    </property>
    <property name="title">
     <string/>
@@ -47,16 +46,18 @@ border: 1px solid rgba(255, 255, 255, 0.11);
     <property name="geometry">
      <rect>
       <x>230</x>
-      <y>120</y>
+      <y>130</y>
       <width>71</width>
       <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border: 2px solid #DEC8AC;
-font: 700 10pt &quot;Segoe UI&quot;;
+     <string notr="true">border: 3px solid #000000;
+background-color:#000000;
 border-radius: 15px;
-color: #DEC8AC;</string>
+color: white;
+font: 700 10pt &quot;Segoe UI&quot;;
+	</string>
     </property>
     <property name="text">
      <string>Genarate </string>
@@ -75,17 +76,27 @@ color: #DEC8AC;</string>
      <item>
       <widget class="QLabel" name="chosemonthyearlabel">
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Chose Month And Year&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:700; color:#ffffff;&quot;&gt;Chose Month And Year&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QDateEdit" name="reportdateEdit">
+       <property name="styleSheet">
+        <string notr="true">font: 12pt &quot;Segoe UI&quot;;
+border: 2px solid  white;
+ border-radius: 5px;
+background-color: #841ebc;
+color: white;</string>
+       </property>
        <property name="inputMethodHints">
         <set>Qt::InputMethodHint::ImhPreferNumbers</set>
        </property>
        <property name="displayFormat">
         <string>M/yyyy</string>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -95,63 +106,77 @@ color: #DEC8AC;</string>
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>180</y>
+      <y>190</y>
       <width>511</width>
-      <height>151</height>
+      <height>101</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QLabel" name="totalincomelabel">
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Your total income&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QLabel" name="totalexpenselabel">
+       <property name="styleSheet">
+        <string notr="true">font:  14pt &quot;Segoe UI&quot;;
+ border-radius: 7px;
+background-color: #841ebc;
+color: white;</string>
+       </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Your total expense&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Your total expense&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="savinglabel">
+      <widget class="QLabel" name="totalincomelabel">
+       <property name="styleSheet">
+        <string notr="true">font:  14pt &quot;Segoe UI&quot;;
+ border-radius: 7px;
+background-color: #841ebc;
+color: white;</string>
+       </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Your Monthly savings&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Your total income&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
     </layout>
    </widget>
-  </widget>
-  <widget class="QLabel" name="lable">
-   <property name="geometry">
-    <rect>
-     <x>330</x>
-     <y>530</y>
-     <width>281</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>TextLabel</string>
-   </property>
+   <widget class="QLabel" name="savinglabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>320</y>
+      <width>509</width>
+      <height>46</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 700 14pt &quot;Segoe UI&quot;;
+border: 2.5px solid  white;
+ border-radius: 7px;
+background-color: #841ebc;
+color: white;</string>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Your Monthly savings&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>690</x>
-     <y>530</y>
+     <x>1160</x>
+     <y>710</y>
      <width>81</width>
      <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border: 2px solid #DEC8AC;
-font: 700 10pt &quot;Segoe UI&quot;;
+    <string notr="true">border: 3px solid #000000;
+background-color:#000000;
 border-radius: 15px;
-color: #DEC8AC;</string>
+color: white;
+font: 700 10pt &quot;Segoe UI&quot;;
+	</string>
    </property>
    <property name="text">
     <string>Back</string>
@@ -160,14 +185,14 @@ color: #DEC8AC;</string>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>390</x>
-     <y>30</y>
-     <width>271</width>
+     <x>400</x>
+     <y>100</y>
+     <width>481</width>
      <height>61</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt; font-weight:700; font-style:italic; color:#1e2c47;&quot;&gt;Financial Report&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt; font-weight:700; color:#841ebc;&quot;&gt;FINANCIAL REPORT&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
  </widget>

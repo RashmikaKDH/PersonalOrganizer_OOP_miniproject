@@ -21,7 +21,7 @@ organizerui::organizerui(QWidget *parent)
     , ui(new Ui::organizerui)
 {
     ui->setupUi(this);
-    ui->lable->setText("Welcome  "+globalUsername);
+    ui->lable->setText("Welcome  "+globalUsername.toUpper());
 }
 /*QString x="seed";
 QMessageBox::information(this,"user:"+x+);*/

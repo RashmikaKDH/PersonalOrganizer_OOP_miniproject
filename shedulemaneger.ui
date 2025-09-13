@@ -6,29 +6,32 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1080</width>
-    <height>667</height>
+    <width>1280</width>
+    <height>768</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Personal Organizer</string>
   </property>
   <property name="windowIcon">
    <iconset resource="src.qrc">
     <normaloff>:/image/window_icon.png</normaloff>:/image/window_icon.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true"> #centralwidget{border-image: url(:/image/image/Background15.jpg) 0 0 0 0 stretch stretch;}
-</string>
+   <string notr="true">#centralwidget{
+border-image:  url(:/image/Background04.png) 0 0 0 0 stretch stretch;}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <widget class="QTableWidget" name="scheduleTable">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>90</y>
-      <width>541</width>
-      <height>401</height>
+      <x>130</x>
+      <y>180</y>
+      <width>561</width>
+      <height>461</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -38,7 +41,34 @@
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">   QTableView {
+      background-color: #841ebc;       
+       alternate-background-color: #f1c232; 
+       gridline-color: #b081ca;        
+       selection-background-color: #b081ca;
+       selection-color: white;  
+       border: 1px solid #841ebc; 
+		font: 700 9pt &quot;Segoe UI&quot;;
+    }
+  QHeaderView::section {
+       background-color: #841ebc; 
+		alternate-background-color: #cebad9; 
+       color: white;              
+       padding: 5px;
+       border: 1px solid #cebad9;
+   }
+    QTableCornerButton::section {
+       background-color: #841ebc;
+       border: 1px solid white;
+    }
+    QHeaderView {
+       background-color: #841ebc;  
+}
+
+    QTableView::item {
+       background-color: #cebad9;
+		color:#841ebc;
+}</string>
     </property>
     <property name="alternatingRowColors">
      <bool>false</bool>
@@ -104,44 +134,23 @@
      </property>
     </column>
    </widget>
-   <widget class="QLabel" name="lable">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>530</y>
-      <width>511</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">  border: 1px solid #ff99cc;
-  border-radius: 10px;
-color: #ff68cc;
-
-</string>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
-    </property>
-   </widget>
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>90</y>
+      <x>720</x>
+      <y>210</y>
       <width>431</width>
       <height>391</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">#groupBox{
-color: rgb(255, 255, 255);
-font: 900 16pt &quot;Segoe UI Black&quot;;
-/* From https://css.glass */
-background: rgba(138, 174, 181, 0.2);
+     <string notr="true">QGroupBox{font: 19pt &quot;Segoe UI&quot;;
+color:White;
 
-border: 1px solid rgba(138, 174, 181, 0.3);
-}</string>
+border-radius: 15px;
+
+background-color: #841ebc;
+border: 1px solid #a23fdf;}</string>
     </property>
     <property name="title">
      <string>Manage Your Shedules</string>
@@ -156,10 +165,12 @@ border: 1px solid rgba(138, 174, 181, 0.3);
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">border: 2px solid #DEC8AC;
-font: 700 10pt &quot;Segoe UI&quot;;
+      <string notr="true">border: 3px solid #000000;
+background-color:#000000;
 border-radius: 15px;
-color: #DEC8AC;</string>
+color: white;
+font: 700 10pt &quot;Segoe UI&quot;;
+	</string>
      </property>
      <property name="text">
       <string>Add shedule</string>
@@ -178,17 +189,18 @@ color: #DEC8AC;</string>
       <item>
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ffffff;&quot;&gt;Name of letcure / Event&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ffffff;&quot;&gt;Name of letcure / Event&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QLineEdit" name="nameEdit">
         <property name="styleSheet">
-         <string notr="true">background: rgba(255, 255, 255, 0.15);
-border-radius: 16px;
-
-border: 1px solid rgba(255, 255, 255, 0.11);</string>
+         <string notr="true">font: 12pt &quot;Segoe UI&quot;;
+border: 2px solid  white;
+ border-radius: 5px;
+background-color: #841ebc;
+color: white;</string>
         </property>
        </widget>
       </item>
@@ -207,16 +219,18 @@ border: 1px solid rgba(255, 255, 255, 0.11);</string>
       <item>
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Start Time&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ffffff;&quot;&gt;Start Time&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QTimeEdit" name="timeEdit">
         <property name="styleSheet">
-         <string notr="true">background: rgba(255, 255, 255, 0.15);
-
-</string>
+         <string notr="true">font: 12pt &quot;Segoe UI&quot;;
+border: 2px solid  white;
+ border-radius: 5px;
+background-color: #841ebc;
+color: white;</string>
         </property>
         <property name="wrapping">
          <bool>false</bool>
@@ -251,15 +265,18 @@ border: 1px solid rgba(255, 255, 255, 0.11);</string>
       <item>
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ffffff;&quot;&gt;Deadline / End Time&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ffffff;&quot;&gt;Deadline / End Time&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QDateTimeEdit" name="deadlineEdit">
         <property name="styleSheet">
-         <string notr="true">background: rgba(255, 255, 255, 0.15);
-</string>
+         <string notr="true">font: 12pt &quot;Segoe UI&quot;;
+border: 2px solid  white;
+ border-radius: 5px;
+background-color: #841ebc;
+color: white;</string>
         </property>
         <property name="locale">
          <locale language="English" country="UnitedStates"/>
@@ -294,10 +311,12 @@ border: 1px solid rgba(255, 255, 255, 0.11);</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">border: 2px solid #DEC8AC;
-font: 700 10pt &quot;Segoe UI&quot;;
+      <string notr="true">border: 3px solid #000000;
+background-color:#000000;
 border-radius: 15px;
-color: #DEC8AC;</string>
+color: white;
+font: 700 10pt &quot;Segoe UI&quot;;
+	</string>
      </property>
      <property name="text">
       <string>Delete shedule</string>
@@ -313,10 +332,12 @@ color: #DEC8AC;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">border: 2px solid #DEC8AC;
-font: 700 10pt &quot;Segoe UI&quot;;
+      <string notr="true">border: 3px solid #000000;
+background-color:#000000;
 border-radius: 15px;
-color: #DEC8AC;</string>
+color: white;
+font: 700 10pt &quot;Segoe UI&quot;;
+	</string>
      </property>
      <property name="text">
       <string>Update shedule</string>
@@ -326,9 +347,9 @@ color: #DEC8AC;</string>
    <widget class="QPushButton" name="pushButton_backto">
     <property name="geometry">
      <rect>
-      <x>850</x>
-      <y>520</y>
-      <width>81</width>
+      <x>1190</x>
+      <y>680</y>
+      <width>71</width>
       <height>31</height>
      </rect>
     </property>
@@ -339,13 +360,28 @@ color: #DEC8AC;</string>
      <string/>
     </property>
     <property name="styleSheet">
-     <string notr="true">border: 2px solid #DEC8AC;
-font: 700 10pt &quot;Segoe UI&quot;;
+     <string notr="true">border: 3px solid #000000;
+background-color:#000000;
 border-radius: 15px;
-color: #DEC8AC;</string>
+color: white;
+font: 700 10pt &quot;Segoe UI&quot;;
+	</string>
     </property>
     <property name="text">
      <string>Back</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>80</y>
+      <width>471</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt; font-weight:700; color:#841ebc;&quot;&gt;SHEDULE MANAGER&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
   </widget>
@@ -354,7 +390,7 @@ color: #DEC8AC;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1080</width>
+     <width>1280</width>
      <height>21</height>
     </rect>
    </property>
