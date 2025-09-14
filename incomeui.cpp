@@ -10,6 +10,8 @@ Incomeui::Incomeui(QWidget *parent)
     , ui(new Ui::Incomeui)
 {
     ui->setupUi(this);
+    ui->QDate->setDate(QDate::currentDate());
+
     if(!DatabaseManager::instance().getDatabase().isOpen()){
         qDebug() << "Failed to Open Database";
     }

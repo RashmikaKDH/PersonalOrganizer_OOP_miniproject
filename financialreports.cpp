@@ -15,6 +15,7 @@ financialreports::financialreports(QWidget *parent)
     , ui(new Ui::financialreports)
 {
     ui->setupUi(this);
+    ui->reportdateEdit->setDate(QDate::currentDate());
 
     //connecting database for login
     if(!DatabaseManager::instance().getDatabase().isOpen()){

@@ -39,6 +39,7 @@ private slots:
     void on_pushButton_add_clicked();
 
 private:
+    void checkAllCategoryBudgets(); // Checks all budgets when the window opens.
     Ui::Expense *ui;
 
 };

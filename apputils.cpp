@@ -118,3 +118,42 @@ void AppUtils::showToastred(const QString& message, QWidget* parent)
     // Use a QTimer to automatically close (and delete) the label after 3 seconds
     QTimer::singleShot(3000, toast, &QLabel::close);
 }
+bool AppUtils::askQuestion(QWidget *parent, const QString &title, const QString &question)
+{
+    QMessageBox msgBox(parent);
+    msgBox.setWindowTitle(title);
+    msgBox.setText(question);
+    msgBox.setIcon(QMessageBox::Question);
+    // Set the buttons to Yes and No
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    // Set the default button to No
+    msgBox.setDefaultButton(QMessageBox::No);
+    msgBox.setStyleSheet(
+        "QMessageBox {"
+        "    background-color: #f1f7ed;"
+        "    color: #54494b;"
+        "    font: 12pt 'Segoe UI';"
+        "}"
+        "QLabel {"
+        "    color: #54494b;"
+        "}"
+        "QPushButton {"
+        "    background-color: #91c7b1;"
+        "    color: #54494b;"
+        "    border-radius: 5px;"
+        "    padding: 8px;"
+        "    min-width: 80px;"
+        "}"
+        "QPushButton:hover {"
+        "    background-color: #6A79C2;"
+        "}"
+        );
+
+
+    // exec() returns the button that was clicked. We check if it was the Yes button.
+    if (msgBox.exec() == QMessageBox::Yes) {
+        return true;
+    } else {
+        return false;
+    }
+}

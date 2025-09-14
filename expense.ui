@@ -18,8 +18,7 @@
     <normaloff>:/image/window_icon.png</normaloff>:/image/window_icon.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">
-QDialog{border-image: url(:/image/Background04.png) 0 0 0 0 stretch stretch;}
+   <string notr="true">#Expense{border-image: url(:/image/Background04.png) 0 0 0 0 stretch stretch;}
 </string>
   </property>
   <widget class="QPushButton" name="pushButton_backto">
@@ -159,7 +158,7 @@ color: white;</string>
         <string notr="true">color: rgb(60, 83, 111);</string>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;font-size:12pt; font-weight:700; color:#ffffff;&quot;&gt;Description&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ffffff;&quot;&gt;Date&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
@@ -171,6 +170,19 @@ border: 2px solid  white;
  border-radius: 5px;
 background-color: #841ebc;
 color: white;</string>
+       </property>
+       <property name="dateTime">
+        <datetime>
+         <hour>5</hour>
+         <minute>30</minute>
+         <second>0</second>
+         <year>2000</year>
+         <month>2</month>
+         <day>1</day>
+        </datetime>
+       </property>
+       <property name="timeSpec">
+        <enum>Qt::TimeSpec::LocalTime</enum>
        </property>
       </widget>
      </item>
@@ -192,7 +204,7 @@ color: white;</string>
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;font-size:12pt; font-weight:700; color:#ffffff;&quot;&gt;Description&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ffffff;&quot;&gt;Amount&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
@@ -246,7 +258,7 @@ font: 700 10pt &quot;Segoe UI&quot;;
         <string notr="true">color: rgb(60, 83, 111);</string>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;font-size:12pt; font-weight:700; color:#ffffff;&quot;&gt;Description&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ffffff;&quot;&gt;Category&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>

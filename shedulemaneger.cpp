@@ -21,6 +21,7 @@ shedulemaneger::shedulemaneger(QWidget *parent)
     , deadlineTimer(new QTimer(this))
 {
     ui->setupUi(this);
+    ui->deadlineEdit->setDate(QDate::currentDate());
 
     if(!DatabaseManager::instance().getScheduleDatabase().isOpen()){
         qDebug() << "Failed to Open Schedule Database";

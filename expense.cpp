@@ -1,3 +1,4 @@
+#include "budgetcreating.h"
 #include "DatabaseManager.h"
 #include "expense.h"
 #include "ui_expense.h"
@@ -10,6 +11,7 @@ Expense::Expense(QWidget *parent)
     , ui(new Ui::Expense)
 {
     ui->setupUi(this);
+    ui->dateEdit_expense->setDate(QDate::currentDate());
 
 
 
@@ -21,6 +23,7 @@ Expense::Expense(QWidget *parent)
         qDebug() << "Database Connected..";
     }
     refreshTable();
+    checkAllCategoryBudgets(); // Check budgets when the window is first opened.
     //ui->label->setText(QString::number(getMonthlyExpenseSum("Food")));
 
 }
@@ -61,6 +64,47 @@ void Expense::on_pushButton_add_clicked()
 
             QString amount = ui->lineEdit_amount->text();
             double amountdouble = amount.toDouble();
+
+
+            // --- THE BUDGET CHECKING LOGIC , BEFORE a new expense is saved ---
+            double budget = Budgetcreating::getBudgetForCategory(expensecategory);
+            // A budget of -1 means no budget was set for this category, so we can skip the check.
+            if (budget >= 0) {
+                double currentExpenses = Budgetcreating::getCurrentExpensesForCategory(expensecategory, exdate);
+                if ((currentExpenses + amountdouble) > budget) {
+                    // The new expense will exceed the budget. Warn the user.
+                     /*AppUtils::showMessage(this, "Budget Warning",
+                                          QString("Adding this expense of %1 will exceed your monthly budget of %2 for %3.\n\n"
+                                                  "Current Spending: %4")
+                                              .arg(amountdouble).arg(budget).arg(expensecategory).arg(currentExpenses));*/
+                    // If the check is true, show the detailed warning message to the user.
+                   /* QMessageBox::StandardButton reply;
+                    reply = QMessageBox::question(this, "Budget Warning",
+                                                  QString("Adding this expense of %1 will exceed your monthly budget of %2 for %3.\n\n"
+                                                          "Current Spending: %4\n\n"
+                                                          "Do you want to add this expense anyway?")
+                                                      .arg(amountdouble).arg(budget).arg(expensecategory).arg(currentExpenses),
+                                                  QMessageBox::Yes|QMessageBox::No);
+
+
+                    if (reply == QMessageBox::No) {
+                        return; // Stop if the user clicks "No".
+                    }*/
+                    QString question = QString("Adding this expense of %1 will exceed your monthly budget of %2 for %3.\n\n"
+                                               "Current Spending: %4\n\n"
+                                               "Do you want to add this expense anyway?")
+                                           .arg(amountdouble).arg(budget).arg(expensecategory).arg(currentExpenses);
+
+                    // 2. Call our new utility function to ask the question.
+                    //    The '!' at the beginning means "if the user did NOT click Yes".
+                    if (!AppUtils::askQuestion(this, "Budget Warning", question)) {
+                        AppUtils::showToastred("New Expense Adding Stop by user...!!!", this);
+                        return; // Stop and do not save the expense.
+                    }
+                }
+            }
+            // --- END of new budget checking logic ---
+
 
 
 //qury to insert data to database
@@ -127,4 +171,27 @@ double Expense::getMonthlyExpenseSum(const QString &category) {
         total = getMonthlyExpenseSum.value("total").toDouble(); // Fetch the total from the result
     }
     return total;
+}
+
+// --- NEW FUNCTION TO THE BOTTOM of expense.cpp ---
+void Expense::checkAllCategoryBudgets()
+{   QDate currentDate = QDate::currentDate();
+    // Loop through every category in the dropdown list.
+    for (int i = 0; i < ui->comboBox_category->count(); ++i) {
+        QString category = ui->comboBox_category->itemText(i);
+        double budget = Budgetcreating::getBudgetForCategory(category);
+
+        // If a budget is set for this category (i.e., not -1)
+        if (budget >= 0) {
+            double currentExpenses = Budgetcreating::getCurrentExpensesForCategory(category, currentDate);
+            if (currentExpenses > budget) {
+                // This category is already over budget. Show a warning.
+                AppUtils::showMessage(this, "Budget Alert",
+                                      QString("You are currently over budget for %1.\n\n"
+                                              "Budget: %2\n"
+                                              "Spent: %3")
+                                          .arg(category).arg(budget).arg(currentExpenses));
+            }
+        }
+    }
 }
