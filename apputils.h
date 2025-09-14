@@ -12,6 +12,8 @@ public:
     static void showMessage(QWidget *parent, const QString &title, const QString &text);
     static void showToast(const QString& message, QWidget* parent);
     static void showToastred(const QString& message, QWidget* parent);
+    // This function will show a "Yes/No" dialog and return true if the user clicks Yes.
+    static bool askQuestion(QWidget *parent, const QString &title, const QString &question);
 
     // You can add more static utility functions here later!
     // For example:

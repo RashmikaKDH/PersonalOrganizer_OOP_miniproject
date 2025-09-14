@@ -167,4 +167,77 @@ void Budgetcreating::on_pushButton_tableview_clicked()
 
 }
 
+// --- ADD THE FOLLOWING CODE TO THE BOTTOM OF budgetcreating.cpp ---
+
+/**
+ * @brief Retrieves the budget amount set for a specific category for the current user.
+ * @param category The category to check (e.g., "Food").
+ * @return The budget amount, or -1.0 if no budget is set for that category.
+ */
+double Budgetcreating::getBudgetForCategory(const QString &category)
+{
+    QSqlQuery query(DatabaseManager::instance().getDatabase());
+    query.prepare("SELECT budgetamount FROM budget WHERE username = :username AND category = :category");
+    query.bindValue(":username", globalUsername);
+    query.bindValue(":category", category);
+
+    // --- REVISED LOGIC START ---
+    if (!query.exec()) {
+        // First, check if the query itself failed to execute.
+        qWarning() << "Failed to query for budget:" << query.lastError().text();
+        return -1.0; // Return -1 to indicate an error or no budget.
+    }
+
+    if (query.next()) {
+        // If query.next() is true, a row was found, so a budget exists.
+        return query.value(0).toDouble();
+    } else {
+        // If query.next() is false, no row was found. This means no budget has been set
+        // for this category by the user. This is not an error.
+        qDebug() << "No budget set for category:" << category;
+        return -1.0;
+    }
+    // --- REVISED LOGIC END ---
+}
+
+/**
+ * @brief Calculates the total expenses for a given category within the current calendar month.
+ * @param category The category to sum up (e.g., "Food").
+ * @return The total amount of expenses for the month.
+ */
+double Budgetcreating::getCurrentExpensesForCategory(const QString &category, const QDate &expenseDate)
+{
+    QSqlQuery query(DatabaseManager::instance().getDatabase());
+    query.prepare("SELECT SUM(amount) FROM expensedata "
+                  "WHERE username = :username AND category = :category "
+                  "AND strftime('%Y-%m', date) = :expenseMonth");
+   // QString currentMonth = QDate::currentDate().toString("yyyy-MM");
+    query.bindValue(":username", globalUsername);
+    query.bindValue(":category", category);
+    // --- BIND the new value for the month ---
+    query.bindValue(":expenseMonth", expenseDate.toString("yyyy-MM"));
+
+    // --- NEW: Detailed Debugging ---
+    qDebug() << "---------------------------------";
+    qDebug() << "Checking expenses for Category:" << category;
+    qDebug() << "Filtering for User:" << globalUsername;
+    qDebug() << "Filtering for Month:" << expenseDate.toString("yyyy-MM");
+    qDebug() << "---------------------------------";
+
+
+    if (query.exec()) {
+        if (query.next()) {
+            QVariant result = query.value(0);
+            qDebug() << "Query successful. Result for SUM(amount) is:" << result.toString();
+            return result.toDouble(); // Correctly returns 0.0 if result is NULL
+        } else {
+            // This case is unlikely for a SUM query but good to have.
+            qDebug() << "Query executed but returned no rows.";
+        }
+    } else {
+        qWarning() << "Expense sum query FAILED:" << query.lastError().text();
+    }
+
+    return 0.0;
+}
 

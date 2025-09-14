@@ -31,13 +31,15 @@ public:
     explicit Budgetcreating(QWidget *parent = nullptr);
     ~Budgetcreating();
 
-    //close database function
+    // This function will get the budget amount for a specific category.
+   // static double getBudgetForCategory(const QString &category);
+    // This function will get the total expenses for a category in the current month.
+    //static double getCurrentExpensesForCategory(const QString &category);
+    // --- MODIFY this function declaration to accept a QDate ---
+    static double getCurrentExpensesForCategory(const QString &category, const QDate &expenseDate);
 
- /*   void conclose(){
+    static double getBudgetForCategory(const QString &category);
 
-        sqlitedb.close();
-        sqlitedb.removeDatabase(QSqlDatabase::defaultConnection);
-    }*/
 
 protected:
     // Implement the pure virtual functions from the base class
