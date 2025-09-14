@@ -101,3 +101,31 @@ void Incomeui::on_pushButton_Add_clicked()
 
 }
 
+void Incomeui::on_deleteOldRecordsButton_clicked()
+{
+    // 1. Ask the user to confirm this dangerous action.
+    bool confirmed = AppUtils::askQuestion(this, "Confirm Deletion",
+                                           "Are you sure you want to permanently delete all income records from previous months?\n\nThis action cannot be undone.");
+
+    // 2. If the user clicks "No", stop right here.
+    if (!confirmed) {
+        return;
+    }
+
+    // 3. Prepare the SQL query to delete records for the current user
+    //    where the date is less than the first day of the current month.
+    QSqlQuery query(DatabaseManager::instance().getDatabase());
+    query.prepare("DELETE FROM incomedata WHERE username = :username AND date < date('now', 'start of month')");
+    query.bindValue(":username", globalUsername);
+
+    // 4. Execute the query and show a success or failure message.
+    if (query.exec()) {
+        AppUtils::showMessage(this, "Success", "Old income records have been deleted.");
+    } else {
+        qWarning() << "Failed to delete old income records:" << query.lastError().text();
+        AppUtils::showMessage(this, "Database Error", "Could not delete old records.");
+    }
+
+    // 5. Refresh the table view to show that the old records are gone.
+    refreshTable();
+}

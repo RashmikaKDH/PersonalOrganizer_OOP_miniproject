@@ -39,6 +39,7 @@ private slots:
     //void on_pushButton_clicked();
 
     void on_pushButton_Add_clicked();
+    void on_deleteOldRecordsButton_clicked();
 
 private:
     Ui::Incomeui *ui;

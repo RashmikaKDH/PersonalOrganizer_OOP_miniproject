@@ -212,7 +212,7 @@ color: white;</string>
        <x>10</x>
        <y>130</y>
        <width>411</width>
-       <height>41</height>
+       <height>51</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -237,16 +237,13 @@ color: white;</string>
         </property>
         <property name="dateTime">
          <datetime>
-          <hour>0</hour>
-          <minute>0</minute>
+          <hour>18</hour>
+          <minute>30</minute>
           <second>0</second>
-          <year>2000</year>
-          <month>1</month>
-          <day>1</day>
+          <year>1999</year>
+          <month>12</month>
+          <day>31</day>
          </datetime>
-        </property>
-        <property name="timeSpec">
-         <enum>Qt::TimeSpec::LocalTime</enum>
         </property>
        </widget>
       </item>
@@ -293,9 +290,6 @@ color: white;</string>
         </property>
         <property name="currentSectionIndex">
          <number>0</number>
-        </property>
-        <property name="timeSpec">
-         <enum>Qt::TimeSpec::LocalTime</enum>
         </property>
        </widget>
       </item>

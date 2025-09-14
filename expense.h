@@ -37,6 +37,7 @@ private slots:
     void on_pushButton_backto_clicked();
 
     void on_pushButton_add_clicked();
+    void on_deleteOldRecordsButton_clicked();
 
 private:
     void checkAllCategoryBudgets(); // Checks all budgets when the window opens.
