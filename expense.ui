@@ -173,16 +173,13 @@ color: white;</string>
        </property>
        <property name="dateTime">
         <datetime>
-         <hour>5</hour>
-         <minute>30</minute>
+         <hour>0</hour>
+         <minute>0</minute>
          <second>0</second>
          <year>2000</year>
          <month>2</month>
          <day>1</day>
         </datetime>
-       </property>
-       <property name="timeSpec">
-        <enum>Qt::TimeSpec::LocalTime</enum>
        </property>
       </widget>
      </item>
@@ -317,6 +314,28 @@ color: white;</string>
    </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt; font-weight:700; color:#841ebc;&quot;&gt;EXPENSE TRACKER&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="deleteOldRecordsButton">
+   <property name="geometry">
+    <rect>
+     <x>1030</x>
+     <y>720</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 3px solid #ff000d;
+background-color:#ff000d;
+border-radius: 15px;
+color: white;
+font: 700 10pt &quot;Segoe UI&quot;;
+
+</string>
+   </property>
+   <property name="text">
+    <string>Delete Old Records</string>
    </property>
   </widget>
  </widget>

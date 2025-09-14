@@ -19,7 +19,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">
-QDialog{border-image: url(:/image/Background04.png) 0 0 0 0 stretch stretch;}
+#Incomeui{border-image: url(:/image/Background04.png) 0 0 0 0 stretch stretch;}
 </string>
   </property>
   <widget class="QPushButton" name="pushButton_back">
@@ -174,7 +174,7 @@ font: 700 10pt &quot;Segoe UI&quot;;
       <x>40</x>
       <y>170</y>
       <width>471</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -283,6 +283,28 @@ color: white;</string>
    </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt; font-weight:700; color:#841ebc;&quot;&gt;INCOME TRACKER&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="deleteOldRecordsButton">
+   <property name="geometry">
+    <rect>
+     <x>1030</x>
+     <y>720</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 3px solid #ff000d;
+background-color:#ff000d;
+border-radius: 15px;
+color: white;
+font: 700 10pt &quot;Segoe UI&quot;;
+
+</string>
+   </property>
+   <property name="text">
+    <string>Delete Old Records</string>
    </property>
   </widget>
  </widget>
