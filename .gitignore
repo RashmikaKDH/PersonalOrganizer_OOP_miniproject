@@ -1,0 +1,13 @@
+# Ignore build folders
+build/
+*.o
+*.obj
+*.exe
+*.dll
+*.log
+
+# Ignore Qt Creator user files
+*.user
+*.user.* 
+*.pro.user
+*.pro.user.*
