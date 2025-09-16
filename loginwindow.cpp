@@ -110,6 +110,9 @@ void loginwindow::on_LPushButton_login_clicked()
            // ui->label->setText("Username and password is not correct");
             AppUtils::showToastred("Username or password is Incorrect..", this);
             //AppUtils::showToastred(const QString& message, QWidget* parent)
+    }else {
+        qDebug() << "query not exe"<< qry.lastError();
+        qDebug() << "Project .pro path:" << PROJECT_ROOT_PATH;
     }
 }
 
