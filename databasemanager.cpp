@@ -1,5 +1,7 @@
 #include "DatabaseManager.h"
 #include <QSqlError>
+#include <QCoreApplication>
+#include <QDir>
 #include "AppUtils.h"
 
 DatabaseManager& DatabaseManager::instance() {
@@ -8,21 +10,37 @@ DatabaseManager& DatabaseManager::instance() {
 }
 
 DatabaseManager::DatabaseManager() {
+    // Start from the application dir
+    QDir dir(QCoreApplication::applicationDirPath());
+    dir.cdUp(); // go up from /debug
+    dir.cdUp(); // go up from /Desktop_Qt_...-Debug
+
+    // Build both DB paths from the same base dir
+    QString loginDbPath = dir.filePath("Db/logindatabase.db");
+    QString scheduleDbPath = dir.filePath("Db/schedules.db");
+    //QString loginDbPath = QDir(QCoreApplication::applicationDirPath()).filePath("Db/logindatabase.db");
+   // QString scheduleDbPath = QDir(QCoreApplication::applicationDirPath()).filePath("Db/schedules.db");
+
+    // --- Connection 1: Login Database ---
     m_db = QSqlDatabase::addDatabase("QSQLITE", "main_connection");
-    m_db.setDatabaseName("C:/Users/Rashmika97/Music/PersonalOrganizerOOP/Db/logindatabase.db");
+    m_db.setDatabaseName(loginDbPath);
+
+    qDebug() << "Application Dir:" << QCoreApplication::applicationDirPath();
+    qDebug() << "Resolved Login DB Path:" << loginDbPath;
+    qDebug() << "Resolved Schedule DB Path:" << scheduleDbPath;
 
     if (!m_db.open()) {
-        qDebug() << "Error: Failed to connect to database." << m_db.lastError().text();
+        qDebug() << "Error: Failed to connect to login database." << m_db.lastError().text();
     } else {
-        qDebug() << "Database connection established successfully.";
+        qDebug() << "Login database connection established successfully.";
     }
 
-    // --- Connection 2: Schedule Database ---
-    m_scheduleDb = QSqlDatabase::addDatabase("QSQLITE", "schedule_connection");
-    m_scheduleDb.setDatabaseName("C:/Users/Rashmika97/Music/PersonalOrganizerOOP/Db/schedules.db");
+    // --- (Optional) Second connection: Schedule DB ---
+    QSqlDatabase scheduleDb = QSqlDatabase::addDatabase("QSQLITE", "schedule_connection");
+    scheduleDb.setDatabaseName(scheduleDbPath);
 
-    if (!m_scheduleDb.open()) {
-        qDebug() << "Error: Failed to connect to schedule database:" << m_scheduleDb.lastError().text();
+    if (!scheduleDb.open()) {
+        qDebug() << "Error: Failed to connect to schedule database." << scheduleDb.lastError().text();
     } else {
         qDebug() << "Schedule database connection established successfully.";
     }
